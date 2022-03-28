@@ -1,0 +1,718 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C006DA227E8CC2800532F95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DA127E8CC2800532F95 /* AppDelegate.swift */; };
+		1C006DA427E8CC2800532F95 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1C006DA327E8CC2800532F95 /* GameScene.sks */; };
+		1C006DA627E8CC2800532F95 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1C006DA527E8CC2800532F95 /* Actions.sks */; };
+		1C006DA827E8CC2800532F95 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DA727E8CC2800532F95 /* GameScene.swift */; };
+		1C006DAA27E8CC2800532F95 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DA927E8CC2800532F95 /* GameViewController.swift */; };
+		1C006DAD27E8CC2800532F95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C006DAB27E8CC2800532F95 /* Main.storyboard */; };
+		1C006DAF27E8CC2900532F95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C006DAE27E8CC2900532F95 /* Assets.xcassets */; };
+		1C006DB227E8CC2900532F95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C006DB027E8CC2900532F95 /* LaunchScreen.storyboard */; };
+		1C006DBC27E8CC2900532F95 /* PufferopoliTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DBB27E8CC2900532F95 /* PufferopoliTests.swift */; };
+		1C006DC627E8CC2900532F95 /* PufferopoliUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DC527E8CC2900532F95 /* PufferopoliUITests.swift */; };
+		1C006DC827E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */; };
+		1C45D27327ECD448001DFBCE /* Carrot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C45D27227ECD447001DFBCE /* Carrot.mp3 */; };
+		1C87BD5727EB1C3A00240F9D /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
+		1C87BD5A27EB2CFE00240F9D /* Puffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD5927EB2CFE00240F9D /* Puffer.swift */; };
+		1C87BD5C27EB2D3600240F9D /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD5B27EB2D3600240F9D /* GameSprite.swift */; };
+		1C87BD5E27EB2D5C00240F9D /* TextureAtlases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD5D27EB2D5C00240F9D /* TextureAtlases.swift */; };
+		1C87BD6427EB7E5000240F9D /* HomeScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD6327EB7E5000240F9D /* HomeScreen.sks */; };
+		1C87BD6627EB805100240F9D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD6527EB805100240F9D /* HomeScreen.swift */; };
+		1C87BD6827EB961C00240F9D /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD6727EB961C00240F9D /* GameOver.sks */; };
+		1C87BD6A27EB971400240F9D /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD6927EB971400240F9D /* GameOver.swift */; };
+		1CD8618627ECAE9E005B4357 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD8618527ECAE9E005B4357 /* SKTAudio.swift */; };
+		1CD8618827ECB00A005B4357 /* Fugu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8618727ECB00A005B4357 /* Fugu.mp3 */; };
+		1CD8618A27ECB209005B4357 /* Hit1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8618927ECB209005B4357 /* Hit1.mp3 */; };
+		1CD8618D27ECB211005B4357 /* Hit3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8618B27ECB210005B4357 /* Hit3.mp3 */; };
+		1CD8618E27ECB211005B4357 /* Hit2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8618C27ECB211005B4357 /* Hit2.mp3 */; };
+		1CD8619227ECB3C4005B4357 /* CarrotSpawn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8619127ECB3C4005B4357 /* CarrotSpawn.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1C006DB827E8CC2900532F95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C006D9627E8CC2800532F95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C006D9D27E8CC2800532F95;
+			remoteInfo = Pufferopoli;
+		};
+		1C006DC227E8CC2900532F95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C006D9627E8CC2800532F95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C006D9D27E8CC2800532F95;
+			remoteInfo = Pufferopoli;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1C006D9E27E8CC2800532F95 /* Fugu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fugu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C006DA127E8CC2800532F95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1C006DA327E8CC2800532F95 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		1C006DA527E8CC2800532F95 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		1C006DA727E8CC2800532F95 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		1C006DA927E8CC2800532F95 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		1C006DAC27E8CC2800532F95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1C006DAE27E8CC2900532F95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C006DB127E8CC2900532F95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1C006DB727E8CC2900532F95 /* PufferopoliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PufferopoliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C006DBB27E8CC2900532F95 /* PufferopoliTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliTests.swift; sourceTree = "<group>"; };
+		1C006DC127E8CC2900532F95 /* PufferopoliUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PufferopoliUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C006DC527E8CC2900532F95 /* PufferopoliUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITests.swift; sourceTree = "<group>"; };
+		1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1C45D27227ECD447001DFBCE /* Carrot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Carrot.mp3; sourceTree = "<group>"; };
+		1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreePixel.ttf; sourceTree = "<group>"; };
+		1C87BD5827EB1DCB00240F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1C87BD5927EB2CFE00240F9D /* Puffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puffer.swift; sourceTree = "<group>"; };
+		1C87BD5B27EB2D3600240F9D /* GameSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
+		1C87BD5D27EB2D5C00240F9D /* TextureAtlases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureAtlases.swift; sourceTree = "<group>"; };
+		1C87BD6327EB7E5000240F9D /* HomeScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeScreen.sks; sourceTree = "<group>"; };
+		1C87BD6527EB805100240F9D /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		1C87BD6727EB961C00240F9D /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
+		1C87BD6927EB971400240F9D /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		1CD8618527ECAE9E005B4357 /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
+		1CD8618727ECB00A005B4357 /* Fugu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fugu.mp3; sourceTree = "<group>"; };
+		1CD8618927ECB209005B4357 /* Hit1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hit1.mp3; sourceTree = "<group>"; };
+		1CD8618B27ECB210005B4357 /* Hit3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hit3.mp3; sourceTree = "<group>"; };
+		1CD8618C27ECB211005B4357 /* Hit2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hit2.mp3; sourceTree = "<group>"; };
+		1CD8619127ECB3C4005B4357 /* CarrotSpawn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CarrotSpawn.mp3; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C006D9B27E8CC2800532F95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C006DB427E8CC2900532F95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C006DBE27E8CC2900532F95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C006D9527E8CC2800532F95 = {
+			isa = PBXGroup;
+			children = (
+				1CD8618227ECAE6B005B4357 /* Sounds */,
+				1C6D151727EA21CD005F37D8 /* Fonts */,
+				1C006DA027E8CC2800532F95 /* Pufferopoli */,
+				1C006DBA27E8CC2900532F95 /* PufferopoliTests */,
+				1C006DC427E8CC2900532F95 /* PufferopoliUITests */,
+				1C006D9F27E8CC2800532F95 /* Products */,
+			);
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		1C006D9F27E8CC2800532F95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C006D9E27E8CC2800532F95 /* Fugu.app */,
+				1C006DB727E8CC2900532F95 /* PufferopoliTests.xctest */,
+				1C006DC127E8CC2900532F95 /* PufferopoliUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C006DA027E8CC2800532F95 /* Pufferopoli */ = {
+			isa = PBXGroup;
+			children = (
+				1C45D26B27ECC304001DFBCE /* Support Code */,
+				1C45D26A27ECC2ED001DFBCE /* Scenes */,
+				1C006DA127E8CC2800532F95 /* AppDelegate.swift */,
+				1C006DA927E8CC2800532F95 /* GameViewController.swift */,
+				1C87BD5827EB1DCB00240F9D /* Info.plist */,
+				1C006DAB27E8CC2800532F95 /* Main.storyboard */,
+				1C006DAE27E8CC2900532F95 /* Assets.xcassets */,
+				1C006DB027E8CC2900532F95 /* LaunchScreen.storyboard */,
+			);
+			path = Pufferopoli;
+			sourceTree = "<group>";
+		};
+		1C006DBA27E8CC2900532F95 /* PufferopoliTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C006DBB27E8CC2900532F95 /* PufferopoliTests.swift */,
+			);
+			path = PufferopoliTests;
+			sourceTree = "<group>";
+		};
+		1C006DC427E8CC2900532F95 /* PufferopoliUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1C006DC527E8CC2900532F95 /* PufferopoliUITests.swift */,
+				1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */,
+			);
+			path = PufferopoliUITests;
+			sourceTree = "<group>";
+		};
+		1C45D26A27ECC2ED001DFBCE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				1C87BD6527EB805100240F9D /* HomeScreen.swift */,
+				1C87BD6327EB7E5000240F9D /* HomeScreen.sks */,
+				1C006DA727E8CC2800532F95 /* GameScene.swift */,
+				1C006DA327E8CC2800532F95 /* GameScene.sks */,
+				1C87BD6927EB971400240F9D /* GameOver.swift */,
+				1C87BD6727EB961C00240F9D /* GameOver.sks */,
+				1C006DA527E8CC2800532F95 /* Actions.sks */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		1C45D26B27ECC304001DFBCE /* Support Code */ = {
+			isa = PBXGroup;
+			children = (
+				1C87BD5B27EB2D3600240F9D /* GameSprite.swift */,
+				1CD8618527ECAE9E005B4357 /* SKTAudio.swift */,
+				1C87BD5D27EB2D5C00240F9D /* TextureAtlases.swift */,
+				1C87BD5927EB2CFE00240F9D /* Puffer.swift */,
+			);
+			path = "Support Code";
+			sourceTree = "<group>";
+		};
+		1C6D151727EA21CD005F37D8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1CD8618227ECAE6B005B4357 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				1CD8618727ECB00A005B4357 /* Fugu.mp3 */,
+				1CD8618927ECB209005B4357 /* Hit1.mp3 */,
+				1CD8618C27ECB211005B4357 /* Hit2.mp3 */,
+				1CD8618B27ECB210005B4357 /* Hit3.mp3 */,
+				1C45D27227ECD447001DFBCE /* Carrot.mp3 */,
+				1CD8619127ECB3C4005B4357 /* CarrotSpawn.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C006D9D27E8CC2800532F95 /* Fugu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C006DCB27E8CC2900532F95 /* Build configuration list for PBXNativeTarget "Fugu" */;
+			buildPhases = (
+				1C006D9A27E8CC2800532F95 /* Sources */,
+				1C006D9B27E8CC2800532F95 /* Frameworks */,
+				1C006D9C27E8CC2800532F95 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fugu;
+			productName = Pufferopoli;
+			productReference = 1C006D9E27E8CC2800532F95 /* Fugu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1C006DB627E8CC2900532F95 /* PufferopoliTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C006DCE27E8CC2900532F95 /* Build configuration list for PBXNativeTarget "PufferopoliTests" */;
+			buildPhases = (
+				1C006DB327E8CC2900532F95 /* Sources */,
+				1C006DB427E8CC2900532F95 /* Frameworks */,
+				1C006DB527E8CC2900532F95 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C006DB927E8CC2900532F95 /* PBXTargetDependency */,
+			);
+			name = PufferopoliTests;
+			productName = PufferopoliTests;
+			productReference = 1C006DB727E8CC2900532F95 /* PufferopoliTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1C006DC027E8CC2900532F95 /* PufferopoliUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C006DD127E8CC2900532F95 /* Build configuration list for PBXNativeTarget "PufferopoliUITests" */;
+			buildPhases = (
+				1C006DBD27E8CC2900532F95 /* Sources */,
+				1C006DBE27E8CC2900532F95 /* Frameworks */,
+				1C006DBF27E8CC2900532F95 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C006DC327E8CC2900532F95 /* PBXTargetDependency */,
+			);
+			name = PufferopoliUITests;
+			productName = PufferopoliUITests;
+			productReference = 1C006DC127E8CC2900532F95 /* PufferopoliUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C006D9627E8CC2800532F95 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					1C006D9D27E8CC2800532F95 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					1C006DB627E8CC2900532F95 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 1C006D9D27E8CC2800532F95;
+					};
+					1C006DC027E8CC2900532F95 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 1C006D9D27E8CC2800532F95;
+					};
+				};
+			};
+			buildConfigurationList = 1C006D9927E8CC2800532F95 /* Build configuration list for PBXProject "Fugu" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1C006D9527E8CC2800532F95;
+			productRefGroup = 1C006D9F27E8CC2800532F95 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C006D9D27E8CC2800532F95 /* Fugu */,
+				1C006DB627E8CC2900532F95 /* PufferopoliTests */,
+				1C006DC027E8CC2900532F95 /* PufferopoliUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C006D9C27E8CC2800532F95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C006DAD27E8CC2800532F95 /* Main.storyboard in Resources */,
+				1CD8618827ECB00A005B4357 /* Fugu.mp3 in Resources */,
+				1CD8618A27ECB209005B4357 /* Hit1.mp3 in Resources */,
+				1C87BD6827EB961C00240F9D /* GameOver.sks in Resources */,
+				1C87BD6427EB7E5000240F9D /* HomeScreen.sks in Resources */,
+				1C006DA427E8CC2800532F95 /* GameScene.sks in Resources */,
+				1CD8619227ECB3C4005B4357 /* CarrotSpawn.mp3 in Resources */,
+				1C006DAF27E8CC2900532F95 /* Assets.xcassets in Resources */,
+				1C87BD5727EB1C3A00240F9D /* FreePixel.ttf in Resources */,
+				1C006DB227E8CC2900532F95 /* LaunchScreen.storyboard in Resources */,
+				1CD8618E27ECB211005B4357 /* Hit2.mp3 in Resources */,
+				1CD8618D27ECB211005B4357 /* Hit3.mp3 in Resources */,
+				1C45D27327ECD448001DFBCE /* Carrot.mp3 in Resources */,
+				1C006DA627E8CC2800532F95 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C006DB527E8CC2900532F95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C006DBF27E8CC2900532F95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C006D9A27E8CC2800532F95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C006DA827E8CC2800532F95 /* GameScene.swift in Sources */,
+				1C006DAA27E8CC2800532F95 /* GameViewController.swift in Sources */,
+				1C87BD6627EB805100240F9D /* HomeScreen.swift in Sources */,
+				1CD8618627ECAE9E005B4357 /* SKTAudio.swift in Sources */,
+				1C87BD5E27EB2D5C00240F9D /* TextureAtlases.swift in Sources */,
+				1C006DA227E8CC2800532F95 /* AppDelegate.swift in Sources */,
+				1C87BD5C27EB2D3600240F9D /* GameSprite.swift in Sources */,
+				1C87BD5A27EB2CFE00240F9D /* Puffer.swift in Sources */,
+				1C87BD6A27EB971400240F9D /* GameOver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C006DB327E8CC2900532F95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C006DBC27E8CC2900532F95 /* PufferopoliTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C006DBD27E8CC2900532F95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C006DC827E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift in Sources */,
+				1C006DC627E8CC2900532F95 /* PufferopoliUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1C006DB927E8CC2900532F95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1C006D9D27E8CC2800532F95 /* Fugu */;
+			targetProxy = 1C006DB827E8CC2900532F95 /* PBXContainerItemProxy */;
+		};
+		1C006DC327E8CC2900532F95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1C006D9D27E8CC2800532F95 /* Fugu */;
+			targetProxy = 1C006DC227E8CC2900532F95 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1C006DAB27E8CC2800532F95 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C006DAC27E8CC2800532F95 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1C006DB027E8CC2900532F95 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C006DB127E8CC2900532F95 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1C006DC927E8CC2900532F95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1C006DCA27E8CC2900532F95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1C006DCC27E8CC2900532F95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = J7Z8L7X93B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pufferopoli/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Fugu;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.Fugu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1C006DCD27E8CC2900532F95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = J7Z8L7X93B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pufferopoli/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Fugu;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.Fugu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		1C006DCF27E8CC2900532F95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J7Z8L7X93B;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.PufferopoliTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pufferopoli.app/Pufferopoli";
+			};
+			name = Debug;
+		};
+		1C006DD027E8CC2900532F95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J7Z8L7X93B;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.PufferopoliTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pufferopoli.app/Pufferopoli";
+			};
+			name = Release;
+		};
+		1C006DD227E8CC2900532F95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J7Z8L7X93B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.PufferopoliUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pufferopoli;
+			};
+			name = Debug;
+		};
+		1C006DD327E8CC2900532F95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J7Z8L7X93B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.PufferopoliUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pufferopoli;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C006D9927E8CC2800532F95 /* Build configuration list for PBXProject "Fugu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C006DC927E8CC2900532F95 /* Debug */,
+				1C006DCA27E8CC2900532F95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C006DCB27E8CC2900532F95 /* Build configuration list for PBXNativeTarget "Fugu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C006DCC27E8CC2900532F95 /* Debug */,
+				1C006DCD27E8CC2900532F95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C006DCE27E8CC2900532F95 /* Build configuration list for PBXNativeTarget "PufferopoliTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C006DCF27E8CC2900532F95 /* Debug */,
+				1C006DD027E8CC2900532F95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C006DD127E8CC2900532F95 /* Build configuration list for PBXNativeTarget "PufferopoliUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C006DD227E8CC2900532F95 /* Debug */,
+				1C006DD327E8CC2900532F95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C006D9627E8CC2800532F95 /* Project object */;
+}
