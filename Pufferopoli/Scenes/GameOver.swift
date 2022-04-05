@@ -11,7 +11,7 @@ class GameOver : SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
     var retryButton = SKSpriteNode()
     var mainMenuButton = SKSpriteNode()
-    var score = SKLabelNode()
+    var score = SKLabelNode(fontNamed: "Free Pixel")
     
     override func didMove(to view: SKView) {
         score.zPosition = 3

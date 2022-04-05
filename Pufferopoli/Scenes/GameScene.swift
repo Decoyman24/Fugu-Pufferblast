@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-struct PhysicsCategory { //Category constants per le collisioni
+struct PhysicsCategory {
     static let None: UInt32 = 0
     static let Enemy: UInt32 = 0b1 // 1
     static let Ally: UInt32 = 0b10 // 2
@@ -43,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var newEnemy2 = SKSpriteNode()
     var newEnemy3 = SKSpriteNode()
     var pufferState : Int = 0
+    let banner = SKSpriteNode(imageNamed: "Banner")
     let carrot = SKSpriteNode(imageNamed: "Carrot")
     let blackBox = SKSpriteNode(imageNamed: "BlackBox")
     let noHit = SKTexture(imageNamed: "Puffer")
@@ -89,12 +90,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func spawnCarrot(){
         if !carrotSpawned{
             carrot.isHidden = false
-        SKTAudio.sharedInstance().playSoundEffect("CarrotSpawn.mp3")
-        carrot.run(SKAction.sequence([(SKAction.run{self.carrotSpawned = true}), (SKAction.wait(forDuration: 4.5)), (SKAction.run{
-            if !self.carrotTaken{
-                self.carrot.isHidden = true}
-        }),
-                                      SKAction.run{self.carrotSpawned = false}])) //Carrot spawns, waits for 5 secs then bye bye and gets ready to spawn again
+            SKTAudio.sharedInstance().playSoundEffect("CarrotSpawn.mp3")
+            carrot.run(SKAction.sequence([(SKAction.run{self.carrotSpawned = true}), (SKAction.wait(forDuration: 4.5)), (SKAction.run{
+                if !self.carrotTaken{
+                    self.carrot.isHidden = true}
+            }),
+                                          SKAction.run{self.carrotSpawned = false}])) //Carrot spawns, waits for 5 secs then bye bye and gets ready to spawn again
         }
     }
     
@@ -205,13 +206,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if collision == PhysicsCategory.Ally | PhysicsCategory.Carrot {
             if !carrot.isHidden{
-            carrotTime()
+                carrotTime()
+            }
         }
-    }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
-        print("collision end")
+//        Your code here
     }
     
     func spawnBullet3(enemy:SKSpriteNode){
@@ -334,25 +335,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let xRange = SKRange(lowerLimit:-self.frame.width, upperLimit:self.frame.width)
         let yRange = SKRange(lowerLimit:-self.frame.height, upperLimit:self.frame.height)
         puffer.constraints = [SKConstraint.positionX(xRange, y: yRange)] // This is to prevent Fugu from going into the endless abyss that awaits outside the phone screen.
-        SKTAudio.sharedInstance().playBackgroundMusic("Fugu.mp3")
+        SKTAudio.sharedInstance().playBackgroundMusic("Fugu.mp3") // This starts playing our music
         self.scaleMode = .aspectFill
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0) // imposta il vettore della gravità dell'intera scena a 0
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0) // Removing gravity so we can freely swim into the sea
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame) //imposta la scena intera come bordo
         self.physicsBody?.categoryBitMask = PhysicsCategory.Wall
         self.physicsBody?.pinned = true
         self.physicsBody?.isDynamic = false
         self.physicsBody!.restitution = 0
         view.ignoresSiblingOrder = true
-        view.showsPhysics = false
+        view.showsPhysics = true
         view.showsFPS = false
         view.showsNodeCount = false
         addChild(worldNode)
         physicsWorld.contactDelegate = self
-        self.scaleMode = .aspectFill
-        scoreLabel = SKLabelNode(fontNamed: "FreePixel.ttf")
+        puffer.position = CGPoint(x:0, y:0)
+        puffer.physicsBody?.affectedByGravity = false
+        puffer.physicsBody?.isDynamic = false
+        puffer.damageable = true
+        puffer.setScale(0.25)
+        puffer.zPosition = 1
+        puffer.physicsBody = SKPhysicsBody(circleOfRadius: puffer.size.height/5)
+        puffer.physicsBody?.categoryBitMask = PhysicsCategory.Ally
+        puffer.physicsBody?.collisionBitMask = PhysicsCategory.Wall
+        puffer.physicsBody?.contactTestBitMask = PhysicsCategory.Bullet | PhysicsCategory.Enemy | PhysicsCategory.Carrot | PhysicsCategory.Dog | PhysicsCategory.Wall
+        addChild(puffer)
+        
+        scoreLabel = SKLabelNode(fontNamed: "Free Pixel")
         scoreLabel.text = "SCORE  0"
-        scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.position = CGPoint(x: -100, y: 380)
+        scoreLabel.fontColor = .white
+        scoreLabel.horizontalAlignmentMode = .center
+        scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 70)
         scoreLabel.zPosition = 2
         worldNode.addChild(scoreLabel)
         
@@ -371,17 +384,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         blackBox.alpha = 0.0
         blackBox.zPosition = 2
         addChild(blackBox)
-        puffer.position = CGPoint(x:0, y:0)
-        puffer.physicsBody?.affectedByGravity = false
-        puffer.physicsBody?.isDynamic = false
-        puffer.damageable = true
-        puffer.setScale(0.25)
-        puffer.zPosition = 1
-        puffer.physicsBody = SKPhysicsBody(circleOfRadius: puffer.size.height/5)
-        puffer.physicsBody?.categoryBitMask = PhysicsCategory.Ally
-        puffer.physicsBody?.collisionBitMask = PhysicsCategory.Wall
-        puffer.physicsBody?.contactTestBitMask = PhysicsCategory.Bullet | PhysicsCategory.Enemy | PhysicsCategory.Carrot | PhysicsCategory.Dog | PhysicsCategory.Wall
-        addChild(puffer)
+        
+        banner.size.height = self.frame.height/9
+        banner.size.width = self.frame.width
+        banner.position = CGPoint(x: 0, y: self.frame.height/2 - 45)
+        banner.zPosition = 0
+        addChild(banner)
         
         if !worldNode.isPaused {
             self.run(SKAction.repeatForever(SKAction.sequence([SKAction.run{self.spawnEnemy()}, SKAction.wait(forDuration: 2.5)])))
@@ -390,3 +398,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
+

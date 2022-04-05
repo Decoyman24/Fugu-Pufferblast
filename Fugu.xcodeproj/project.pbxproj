@@ -18,6 +18,8 @@
 		1C006DBC27E8CC2900532F95 /* PufferopoliTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DBB27E8CC2900532F95 /* PufferopoliTests.swift */; };
 		1C006DC627E8CC2900532F95 /* PufferopoliUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DC527E8CC2900532F95 /* PufferopoliUITests.swift */; };
 		1C006DC827E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */; };
+		1C04ECA727FC720600E65936 /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
+		1C04ECA827FC720600E65936 /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
 		1C45D27327ECD448001DFBCE /* Carrot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C45D27227ECD447001DFBCE /* Carrot.mp3 */; };
 		1C87BD5727EB1C3A00240F9D /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
 		1C87BD5A27EB2CFE00240F9D /* Puffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD5927EB2CFE00240F9D /* Puffer.swift */; };
@@ -336,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C04ECA727FC720600E65936 /* FreePixel.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C04ECA827FC720600E65936 /* FreePixel.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
