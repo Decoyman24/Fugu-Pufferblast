@@ -43,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var newEnemy2 = SKSpriteNode()
     var newEnemy3 = SKSpriteNode()
     var pufferState : Int = 0
+    let background = SKSpriteNode(imageNamed: "Background")
     let banner = SKSpriteNode(imageNamed: "Banner")
     let carrot = SKSpriteNode(imageNamed: "Carrot")
     let blackBox = SKSpriteNode(imageNamed: "BlackBox")
@@ -344,7 +345,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.isDynamic = false
         self.physicsBody!.restitution = 0
         view.ignoresSiblingOrder = true
-        view.showsPhysics = true
+        view.showsPhysics = false
         view.showsFPS = false
         view.showsNodeCount = false
         addChild(worldNode)
@@ -390,6 +391,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         banner.position = CGPoint(x: 0, y: self.frame.height/2 - 45)
         banner.zPosition = 0
         addChild(banner)
+        
+        background.size = self.frame.size
+        background.position = CGPoint(x:0, y:0)
+        background.zPosition = -3
+        addChild(background)
         
         if !worldNode.isPaused {
             self.run(SKAction.repeatForever(SKAction.sequence([SKAction.run{self.spawnEnemy()}, SKAction.wait(forDuration: 2.5)])))

@@ -15,8 +15,10 @@ class GameOver : SKScene {
     
     override func didMove(to view: SKView) {
         score.zPosition = 3
-        score.text = "SCORE: \(userScore)"
-        score.position = CGPoint(x: 0, y: 352)
+        score.horizontalAlignmentMode = .center
+        score.fontColor = .systemOrange
+        score.text = "FINAL SCORE: \(userScore)"
+        score.position = CGPoint(x: 0, y: self.frame.height/2 - 70)
         addChild(score)
         if let gameo = self.childNode(withName: "RetryButton") as? SKSpriteNode {
             retryButton = gameo
