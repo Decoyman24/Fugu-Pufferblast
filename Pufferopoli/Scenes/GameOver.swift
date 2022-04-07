@@ -28,14 +28,14 @@ class GameOver : SKScene {
         score.horizontalAlignmentMode = .center
         score.fontColor = .systemOrange
         score.text = "FINAL SCORE: \(userScore)"
-        score.position = CGPoint(x: 0, y: self.frame.height/2 - 70)
+        score.position = CGPoint(x: 0, y: self.frame.height/5 - 80)
         addChild(score)
         
         highScore.zPosition = 3
         highScore.horizontalAlignmentMode = .center
         highScore.fontColor = .systemOrange
         highScore.text = "HIGH SCORE: \(defaults.integer(forKey: scoreKey))"
-        highScore.position = CGPoint(x: 0, y: self.frame.height/2 - 100)
+        highScore.position = CGPoint(x: 0, y: self.frame.height/5 - 110)
         addChild(highScore)
         
         if let gameo = self.childNode(withName: "RetryButton") as? SKSpriteNode {

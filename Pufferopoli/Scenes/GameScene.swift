@@ -36,6 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var carrotSpawned = false
     var controlling = false
     var carrotTaken = false
+    var spawnLetters = false
     var nodePosition = CGPoint()
     var startTouch = CGPoint()
     var enemies:[SKSpriteNode] = []
@@ -77,7 +78,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func gameOver(){
-        SKTAudio.sharedInstance().playSoundEffect("Hit3.mp3")
         SKTAudio.sharedInstance().backgroundMusicPlayer?.stop()
         worldNode.isPaused = true
         controlling = false
@@ -101,6 +101,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func carrotTime(){
+        let generator = UIImpactFeedbackGenerator(style: .rigid)
+        generator.impactOccurred()
         carrot.isHidden = true
         carrotTaken = true
         SKTAudio.sharedInstance().playSoundEffect("Carrot.mp3")
@@ -125,6 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait,puffAlpha, wait, puffAlpha2, wait, puffAlpha, wait, puffAlpha2, SKAction.run{self.puffer.damageable = true}, (SKAction.wait(forDuration: 2)), (SKAction.run{self.carrotTaken = false})]))
                 carrotSpawned = false
             }
+            
             if pufferState == 1 {
                 puffer.createFutwoAnimation()
                 puffer.run(puffer.futwoAction)
@@ -132,6 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait,puffAlpha, wait, puffAlpha2, wait, puffAlpha, wait, puffAlpha2, SKAction.run{self.puffer.damageable = true}, (SKAction.wait(forDuration: 2)), (SKAction.run{self.carrotTaken = false})]))
                 carrotSpawned = false
             }
+            
             else if pufferState == 2 {
                 puffer.createFatguAnimation()
                 puffer.run(puffer.fatguAction)
@@ -139,10 +143,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait,puffAlpha, wait, puffAlpha2, wait, puffAlpha, wait, puffAlpha2, SKAction.run{self.puffer.damageable = true}, (SKAction.wait(forDuration: 2)), (SKAction.run{self.carrotTaken = false})]))
                 carrotSpawned = false
             }
+            
             else if pufferState == 3 {
                 gameOver()
             }
-            
         }
     }
     
@@ -153,9 +157,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let puffAlpha = SKAction.fadeAlpha(to: 0.5, duration: 0.5)
         let wait = SKAction.wait(forDuration: 0.2)
         let puffAlpha2 = SKAction.fadeAlpha(to: 1.0, duration: 0.5)
+        
         puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait, SKAction.run{self.puffer.damageable = true}]))
         if pufferState == 1 {
             SKTAudio.sharedInstance().playSoundEffect("Hit1.mp3")
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
             puffer.createFutwoAnimation()
             puffer.run(puffer.futwoAction)
             puffer.setScale(0.60)
@@ -163,18 +170,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         else if pufferState == 2 {
             SKTAudio.sharedInstance().playSoundEffect("Hit2.mp3")
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+                       generator.impactOccurred()
             puffer.createFatguAnimation()
             puffer.run(puffer.fatguAction)
             puffer.setScale(0.80)
         }
         
         else if pufferState == 3 {
+            SKTAudio.sharedInstance().playSoundEffect("Hit3.mp3")
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+                       generator.impactOccurred()
             gameOver()
         }
     }
     
     func enemyHit(){
         print("touched enemy")
+        SKTAudio.sharedInstance().playSoundEffect("Slashed.mp3")
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
         pufferState = 3
         if pufferState == 1 {
             puffer.createFutwoAnimation()

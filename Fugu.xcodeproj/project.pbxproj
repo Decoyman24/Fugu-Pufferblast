@@ -20,7 +20,8 @@
 		1C006DC827E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */; };
 		1C04ECA727FC720600E65936 /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
 		1C04ECA827FC720600E65936 /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
-		1C45D27327ECD448001DFBCE /* Carrot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C45D27227ECD447001DFBCE /* Carrot.mp3 */; };
+		1C8594A227FF2C1500750CF4 /* Slashed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A127FF2C1500750CF4 /* Slashed.mp3 */; };
+		1C8594A427FF2FDD00750CF4 /* Carrot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */; };
 		1C87BD5727EB1C3A00240F9D /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
 		1C87BD5A27EB2CFE00240F9D /* Puffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD5927EB2CFE00240F9D /* Puffer.swift */; };
 		1C87BD5C27EB2D3600240F9D /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD5B27EB2D3600240F9D /* GameSprite.swift */; };
@@ -69,7 +70,8 @@
 		1C006DC127E8CC2900532F95 /* PufferopoliUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PufferopoliUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C006DC527E8CC2900532F95 /* PufferopoliUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITests.swift; sourceTree = "<group>"; };
 		1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1C45D27227ECD447001DFBCE /* Carrot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Carrot.mp3; sourceTree = "<group>"; };
+		1C8594A127FF2C1500750CF4 /* Slashed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slashed.mp3; sourceTree = "<group>"; };
+		1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Carrot.mp3; sourceTree = "<group>"; };
 		1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreePixel.ttf; sourceTree = "<group>"; };
 		1C87BD5827EB1DCB00240F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1C87BD5927EB2CFE00240F9D /* Puffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puffer.swift; sourceTree = "<group>"; };
@@ -203,11 +205,12 @@
 		1CD8618227ECAE6B005B4357 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				1C8594A127FF2C1500750CF4 /* Slashed.mp3 */,
 				1CD8618727ECB00A005B4357 /* Fugu.mp3 */,
 				1CD8618927ECB209005B4357 /* Hit1.mp3 */,
 				1CD8618C27ECB211005B4357 /* Hit2.mp3 */,
 				1CD8618B27ECB210005B4357 /* Hit3.mp3 */,
-				1C45D27227ECD447001DFBCE /* Carrot.mp3 */,
+				1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */,
 				1CD8619127ECB3C4005B4357 /* CarrotSpawn.mp3 */,
 			);
 			path = Sounds;
@@ -322,6 +325,7 @@
 				1CD8618A27ECB209005B4357 /* Hit1.mp3 in Resources */,
 				1C87BD6827EB961C00240F9D /* GameOver.sks in Resources */,
 				1C87BD6427EB7E5000240F9D /* HomeScreen.sks in Resources */,
+				1C8594A227FF2C1500750CF4 /* Slashed.mp3 in Resources */,
 				1C006DA427E8CC2800532F95 /* GameScene.sks in Resources */,
 				1CD8619227ECB3C4005B4357 /* CarrotSpawn.mp3 in Resources */,
 				1C006DAF27E8CC2900532F95 /* Assets.xcassets in Resources */,
@@ -329,7 +333,7 @@
 				1C006DB227E8CC2900532F95 /* LaunchScreen.storyboard in Resources */,
 				1CD8618E27ECB211005B4357 /* Hit2.mp3 in Resources */,
 				1CD8618D27ECB211005B4357 /* Hit3.mp3 in Resources */,
-				1C45D27327ECD448001DFBCE /* Carrot.mp3 in Resources */,
+				1C8594A427FF2FDD00750CF4 /* Carrot.mp3 in Resources */,
 				1C006DA627E8CC2800532F95 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
