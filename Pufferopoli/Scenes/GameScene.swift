@@ -213,7 +213,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
-//        Your code here
+        //        Your code here
     }
     
     func spawnBullet3(enemy:SKSpriteNode){
@@ -221,6 +221,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bulletPop = SKTexture(imageNamed: "bubblepop")
         Bullet.zPosition = 1
         Bullet.setScale(1.0)
+        Bullet.position = CGPoint(x: enemy.position.x, y: enemy.position.y)
+        
+        let action = SKAction.move(to: puffer.position, duration: 0.9)
+        let actionDone = SKAction.sequence([SKAction.setTexture(bulletPop), SKAction.wait(forDuration: 0.1), SKAction.removeFromParent()])
+        Bullet.run(SKAction.sequence([action, actionDone]))
+        Bullet.physicsBody = SKPhysicsBody(circleOfRadius: Bullet.size.height/7)
+        Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
+        Bullet.physicsBody!.collisionBitMask = PhysicsCategory.None
+        Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
+        Bullet.physicsBody?.affectedByGravity = false
+        Bullet.physicsBody?.isDynamic = false
+        worldNode.addChild(Bullet)
+    }
+    
+    func spawnBullet4(enemy:SKSpriteNode){
+        let Bullet = SKSpriteNode(imageNamed: "bubble")
+        let bulletPop = SKTexture(imageNamed: "bubblepop")
+        Bullet.zPosition = 1
+        Bullet.setScale(1.5)
         Bullet.position = CGPoint(x: enemy.position.x, y: enemy.position.y)
         
         let action = SKAction.move(to: puffer.position, duration: 1.3)
@@ -236,11 +255,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnEnemy() {
+        let vortex = SKSpriteNode(imageNamed: "Vortexopoli")
+        vortex.setScale(0.8)
+        vortex.alpha = 0.0
+        vortex.zPosition = 1
         createEnemyAnimation()
+        createBubbleAnimation()
         newEnemy2 = SKSpriteNode(texture: idleFrames[0])
         enemies.append(newEnemy2)
+        newEnemy2.alpha = 0
         newEnemy2.setScale(0.5)
-        newEnemy2.zPosition = 1
+        newEnemy2.zPosition = 2
         newEnemy2.position = enemyPositions.randomElement()!
         newEnemy2.physicsBody = SKPhysicsBody(circleOfRadius: newEnemy2.size.height/4)
         newEnemy2.physicsBody?.categoryBitMask = PhysicsCategory.Enemy
@@ -248,14 +273,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         newEnemy2.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
         newEnemy2.physicsBody?.affectedByGravity = false
         newEnemy2.physicsBody?.isDynamic = false
-        worldNode.addChild(newEnemy2)
+        vortex.position = newEnemy2.position
+        worldNode.addChild(vortex)
+        vortex.run(bubbleAnimation)
+        vortex.run(SKAction.sequence([(SKAction.fadeAlpha(to: 0.8, duration: 0.1)), SKAction.rotate(byAngle: 10, duration: 0.8), (SKAction.wait(forDuration: 0.2)), SKAction.run{self.worldNode.addChild(self.newEnemy2)
+            self.newEnemy2.run(SKAction.fadeAlpha(to: 1, duration: 0.2))
+        }, (SKAction.wait(forDuration: 0.2)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
+        
         newEnemy2.run(enemyAnimation)
-        newEnemy2.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.removeFromParent())]))
+        newEnemy2.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
+        
         for e in enemies
         {
-            let wait = SKAction.wait(forDuration: 1.5)
+            let wait = SKAction.wait(forDuration: 1.0)
             let run = SKAction.run {
-                self.spawnBullet3(enemy: e)
+                self.spawnBullet4(enemy: e)
             }
             e.run(SKAction.repeatForever(SKAction.sequence([wait, run])))
         }
@@ -263,11 +295,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnLilEnemy() {
+        let vortex = SKSpriteNode(imageNamed: "Vortexopoli")
+        vortex.setScale(0.8)
+        vortex.alpha = 0.0
+        vortex.zPosition = 1
         createMaleniaAnimation()
+        createBubbleAnimation()
         newEnemy = SKSpriteNode(texture: idleMalenia[0])
         enemies.append(newEnemy)
         newEnemy.setScale(0.5)
-        newEnemy.zPosition = 1
+        newEnemy.zPosition = 2
         newEnemy.position = smallEnemyPositions.randomElement()!
         newEnemy.physicsBody = SKPhysicsBody(circleOfRadius: newEnemy.size.height/5)
         newEnemy.physicsBody?.categoryBitMask = PhysicsCategory.Enemy
@@ -275,9 +312,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         newEnemy.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
         newEnemy.physicsBody?.affectedByGravity = false
         newEnemy.physicsBody?.isDynamic = false
-        worldNode.addChild(newEnemy)
+        vortex.position = newEnemy.position
+        worldNode.addChild(vortex)
+        vortex.run(bubbleAnimation)
+        
+        vortex.run(SKAction.sequence([(SKAction.fadeAlpha(to: 0.8, duration: 0.1)), SKAction.rotate(byAngle: 10, duration: 0.8), (SKAction.wait(forDuration: 0.2)), SKAction.run{self.worldNode.addChild(self.newEnemy)
+            self.newEnemy.run(SKAction.fadeAlpha(to: 1, duration: 0.2))
+        }, (SKAction.wait(forDuration: 0.2)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
+        
         newEnemy.run(maleniaAction)
-        newEnemy.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.removeFromParent())]))
+        newEnemy.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
         for e in enemies
         {
             let wait = SKAction.wait(forDuration: 0.5)
@@ -333,8 +377,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        let xRange = SKRange(lowerLimit:-self.frame.width, upperLimit:self.frame.width)
-        let yRange = SKRange(lowerLimit:-self.frame.height, upperLimit:self.frame.height)
+        let xRange = SKRange(lowerLimit:-(self.frame.width/2 - 10), upperLimit:self.frame.width/2 - 10)
+        let yRange = SKRange(lowerLimit:-(self.frame.height/2 - 10), upperLimit:self.frame.height/2 - 10)
         puffer.constraints = [SKConstraint.positionX(xRange, y: yRange)] // This is to prevent Fugu from going into the endless abyss that awaits outside the phone screen.
         SKTAudio.sharedInstance().playBackgroundMusic("Fugu.mp3") // This starts playing our music
         self.scaleMode = .aspectFill
