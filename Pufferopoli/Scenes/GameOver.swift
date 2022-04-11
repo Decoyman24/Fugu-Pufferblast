@@ -7,34 +7,31 @@
 
 import SpriteKit
 
-let scoreKey = "scoreKey"
-let defaults = UserDefaults.standard
-var highestScore = defaults.integer(forKey: scoreKey)
-
 class GameOver : SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
     var retryButton = SKSpriteNode()
     var mainMenuButton = SKSpriteNode()
-    var score = SKLabelNode(fontNamed: "Free Pixel")
-    var highScore = SKLabelNode(fontNamed: "Free Pixel")
+    var score = SKLabelNode(fontNamed: "Bubble Pixel-7 Dark")
+    var highScore = SKLabelNode(fontNamed: "Bubble Pixel-7 Dark")
     
     override func didMove(to view: SKView) {
-        if userScore > highestScore {
-                let defaults = UserDefaults.standard
-                defaults.set(userScore, forKey: scoreKey)
+        if userScore > UserDefaults.standard.integer(forKey: "scoreKey") {
+            UserDefaults.standard.set(userScore, forKey: "scoreKey")
         }
         
         score.zPosition = 3
         score.horizontalAlignmentMode = .center
         score.fontColor = .systemOrange
         score.text = "FINAL SCORE: \(userScore)"
+        score.fontSize = 22.0
         score.position = CGPoint(x: 0, y: self.frame.height/5 - 80)
         addChild(score)
         
         highScore.zPosition = 3
         highScore.horizontalAlignmentMode = .center
         highScore.fontColor = .systemOrange
-        highScore.text = "HIGH SCORE: \(defaults.integer(forKey: scoreKey))"
+        highScore.text = "HIGH SCORE: \(UserDefaults.standard.integer(forKey: "scoreKey"))"
+        highScore.fontSize = 22.0
         highScore.position = CGPoint(x: 0, y: self.frame.height/5 - 110)
         addChild(highScore)
         

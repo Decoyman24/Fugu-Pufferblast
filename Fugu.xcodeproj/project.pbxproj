@@ -22,6 +22,7 @@
 		1C04ECA827FC720600E65936 /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
 		1C8594A227FF2C1500750CF4 /* Slashed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A127FF2C1500750CF4 /* Slashed.mp3 */; };
 		1C8594A427FF2FDD00750CF4 /* Carrot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */; };
+		1C8594A628046BD400750CF4 /* BubblePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A528046BD400750CF4 /* BubblePixel.ttf */; };
 		1C87BD5727EB1C3A00240F9D /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
 		1C87BD5A27EB2CFE00240F9D /* Puffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD5927EB2CFE00240F9D /* Puffer.swift */; };
 		1C87BD5C27EB2D3600240F9D /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87BD5B27EB2D3600240F9D /* GameSprite.swift */; };
@@ -72,6 +73,7 @@
 		1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1C8594A127FF2C1500750CF4 /* Slashed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slashed.mp3; sourceTree = "<group>"; };
 		1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Carrot.mp3; sourceTree = "<group>"; };
+		1C8594A528046BD400750CF4 /* BubblePixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BubblePixel.ttf; sourceTree = "<group>"; };
 		1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreePixel.ttf; sourceTree = "<group>"; };
 		1C87BD5827EB1DCB00240F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1C87BD5927EB2CFE00240F9D /* Puffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puffer.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		1C6D151727EA21CD005F37D8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1C8594A528046BD400750CF4 /* BubblePixel.ttf */,
 				1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */,
 			);
 			path = Fonts;
@@ -326,6 +329,7 @@
 				1C87BD6827EB961C00240F9D /* GameOver.sks in Resources */,
 				1C87BD6427EB7E5000240F9D /* HomeScreen.sks in Resources */,
 				1C8594A227FF2C1500750CF4 /* Slashed.mp3 in Resources */,
+				1C8594A628046BD400750CF4 /* BubblePixel.ttf in Resources */,
 				1C006DA427E8CC2800532F95 /* GameScene.sks in Resources */,
 				1CD8619227ECB3C4005B4357 /* CarrotSpawn.mp3 in Resources */,
 				1C006DAF27E8CC2900532F95 /* Assets.xcassets in Resources */,
@@ -547,7 +551,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = J7Z8L7X93B;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -579,7 +583,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = J7Z8L7X93B;
 				GENERATE_INFOPLIST_FILE = YES;

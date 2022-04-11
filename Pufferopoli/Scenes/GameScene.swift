@@ -421,7 +421,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         puffer.physicsBody?.contactTestBitMask = PhysicsCategory.Bullet | PhysicsCategory.Enemy | PhysicsCategory.Carrot | PhysicsCategory.Dog | PhysicsCategory.Wall
         addChild(puffer)
         
-        scoreLabel = SKLabelNode(fontNamed: "Free Pixel")
+        scoreLabel = SKLabelNode(fontNamed: "Bubble Pixel-7 Dark")
+        scoreLabel.fontSize = 22.0
         scoreLabel.text = "SCORE  0"
         scoreLabel.fontColor = .white
         scoreLabel.horizontalAlignmentMode = .center
@@ -447,7 +448,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         banner.size.height = self.frame.height/9
         banner.size.width = self.frame.width
-        banner.position = CGPoint(x: 0, y: self.frame.height/2 - 45)
+        banner.position = CGPoint(x: 0, y: self.frame.height/2 - 50)
         banner.zPosition = 0
         addChild(banner)
         
