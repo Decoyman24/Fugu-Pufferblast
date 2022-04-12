@@ -13,7 +13,9 @@ class Puffer : SKSpriteNode, GameSprite {
     var idleAnimation = SKAction()
     var futwoAction = SKAction()
     var fatguAction = SKAction()
+    var superGuAction = SKAction()
     var damageable = true
+    var golden = false
     
     
     func createAnimation(){
@@ -32,6 +34,12 @@ class Puffer : SKSpriteNode, GameSprite {
         let idleFatgu: [SKTexture] = [fatGu.textureNamed("FATGU1"), fatGu.textureNamed("FATGU2"), fatGu.textureNamed("FATGU3"), fatGu.textureNamed("FATGU4"), fatGu.textureNamed("FATGU5"), fatGu.textureNamed("FATGU6"), fatGu.textureNamed("FATGU7"), fatGu.textureNamed("FATGU8")]
         let idleAction = SKAction.animate(with: idleFatgu, timePerFrame: 0.15)
         fatguAction = SKAction.repeatForever(idleAction)
+    }
+    
+    func createSuperGuAnimation(){
+        let superFrames: [SKTexture] = [superGuAtlas.textureNamed("SFugu1"), superGuAtlas.textureNamed("SFugu2"), superGuAtlas.textureNamed("SFugu3"), superGuAtlas.textureNamed("SFugu4"), superGuAtlas.textureNamed("SFugu5"), superGuAtlas.textureNamed("SFugu6"), superGuAtlas.textureNamed("SFugu7"), superGuAtlas.textureNamed("SFugu8")]
+        let idleAction = SKAction.animate(with: superFrames, timePerFrame: 0.15)
+        superGuAction = SKAction.repeatForever(idleAction)
     }
     
     

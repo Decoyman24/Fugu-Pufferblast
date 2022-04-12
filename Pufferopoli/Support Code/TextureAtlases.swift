@@ -10,6 +10,7 @@ var userScore = 0
 var bigEnemyAtlas : SKTextureAtlas = SKTextureAtlas(named: "BigEnemy")
 var maleniaAtlas : SKTextureAtlas = SKTextureAtlas(named: "Malenia")
 var fugu2Atlas: SKTextureAtlas = SKTextureAtlas(named: "Fugu2")
+var superGuAtlas: SKTextureAtlas = SKTextureAtlas(named: "SuperFugu")
 var fatGu: SKTextureAtlas = SKTextureAtlas(named: "Fugu3")
 var vortexAtlas: SKTextureAtlas = SKTextureAtlas(named: "Vortex")
 

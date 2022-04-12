@@ -15,7 +15,7 @@ struct PhysicsCategory {
     static let Ally: UInt32 = 0b10 // 2
     static let Bullet: UInt32 = 0b100 // 3
     static let Wall: UInt32 = 0b1000 // 4
-    static let Dog: UInt32 = 0b10000 // 8
+    static let Letter: UInt32 = 0b10000 // 8
     static let Carrot: UInt32 = 0b100000 // 16
 }
 
@@ -24,26 +24,31 @@ let x: CGFloat = randomNumber == 0 ? 1 : -1
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var sceneManagerDelegate: SceneManagerDelegate?
+    
     var gameScore = 0 {
         didSet{
             scoreLabel.text = "SCORE: \(gameScore)"
         }
     }
+    
+    var multiLabel: SKLabelNode!
     var worldNode = SKNode()
     var puffer = Puffer()
     var scoreLabel: SKLabelNode!
     var mod = 1500
+    var notHit = 0
+    var letterCount = 0
     var carrotSpawned = false
     var controlling = false
     var carrotTaken = false
-    var spawnLetters = false
     var nodePosition = CGPoint()
     var startTouch = CGPoint()
-    var enemies:[SKSpriteNode] = []
+    var enemies: [SKSpriteNode] = []
     var newEnemy = SKSpriteNode()
     var newEnemy2 = SKSpriteNode()
     var newEnemy3 = SKSpriteNode()
     var pufferState : Int = 0
+    var letter = SKSpriteNode()
     let background = SKSpriteNode(imageNamed: "Background")
     let banner = SKSpriteNode(imageNamed: "Banner")
     let carrot = SKSpriteNode(imageNamed: "Carrot")
@@ -51,6 +56,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let noHit = SKTexture(imageNamed: "Puffer")
     let oneHit = SKTexture(imageNamed: "PufferBig")
     let twoHit = SKTexture(imageNamed: "PufferBigger")
+    let power = SKTextureAtlas(named: "PowerLetters")
+    var powerLetters: [SKTexture] = []
     let enemyPositions: [CGPoint] = [CGPoint(x:-160, y:288),CGPoint(x:160, y:288),CGPoint(x:160, y:-288),CGPoint(x:-160, y:-288)]
     let smallEnemyPositions: [CGPoint] = [CGPoint(x:0, y:288),CGPoint(x:0, y:-288),CGPoint(x:180, y:0),CGPoint(x:-180, y:0)]
     let thirdEnemyPositions: [CGPoint] = [CGPoint(x: -140, y:330),CGPoint(x:140, y:300),CGPoint(x:-140, y:-330),CGPoint(x:140, y:300)]
@@ -121,6 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if pufferState > 0 {
             pufferState -= 1
             if pufferState == 0 {
+                multiLabel.isHidden = true
                 puffer.createAnimation()
                 puffer.run(puffer.idleAnimation)
                 puffer.setScale(0.25)
@@ -129,6 +137,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if pufferState == 1 {
+                multiLabel.isHidden = false
+                multiLabel.text = "2X"
+                multiLabel.fontSize = 24.0
+                multiLabel.fontColor = .yellow
                 puffer.createFutwoAnimation()
                 puffer.run(puffer.futwoAction)
                 puffer.setScale(0.65)
@@ -137,6 +149,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             else if pufferState == 2 {
+                multiLabel.isHidden = false
+                multiLabel.text = "3X"
+                multiLabel.fontSize = 26.0
+                multiLabel.fontColor = .orange
                 puffer.createFatguAnimation()
                 puffer.run(puffer.fatguAction)
                 puffer.setScale(0.80)
@@ -151,6 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func bulletHit(){
+        notHit = 0
         print("hit by bubble")
         pufferState += 1
         puffer.damageable = false
@@ -160,6 +177,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait, SKAction.run{self.puffer.damageable = true}]))
         if pufferState == 1 {
+            multiLabel.isHidden = false
+            multiLabel.text = "2X"
+            multiLabel.fontSize = 24.0
+            multiLabel.fontColor = .yellow
             SKTAudio.sharedInstance().playSoundEffect("Hit1.mp3")
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.impactOccurred()
@@ -169,9 +190,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         else if pufferState == 2 {
+            multiLabel.isHidden = false
+            multiLabel.text = "3X"
+            multiLabel.fontSize = 26.0
+            multiLabel.fontColor = .orange
             SKTAudio.sharedInstance().playSoundEffect("Hit2.mp3")
             let generator = UIImpactFeedbackGenerator(style: .medium)
-                       generator.impactOccurred()
+            generator.impactOccurred()
             puffer.createFatguAnimation()
             puffer.run(puffer.fatguAction)
             puffer.setScale(0.80)
@@ -180,23 +205,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if pufferState == 3 {
             SKTAudio.sharedInstance().playSoundEffect("Hit3.mp3")
             let generator = UIImpactFeedbackGenerator(style: .heavy)
-                       generator.impactOccurred()
+            generator.impactOccurred()
             gameOver()
         }
     }
     
     func enemyHit(){
+        notHit = 0
         print("touched enemy")
         SKTAudio.sharedInstance().playSoundEffect("Slashed.mp3")
         let generator = UIImpactFeedbackGenerator(style: .heavy)
         generator.impactOccurred()
         pufferState = 3
         if pufferState == 1 {
+            multiLabel.isHidden = false
+            multiLabel.text = "2X"
+            multiLabel.fontSize = 24.0
+            multiLabel.fontColor = .yellow
             puffer.createFutwoAnimation()
             puffer.run(puffer.futwoAction)
             puffer.setScale(0.65)
         }
         else if pufferState == 2 {
+            multiLabel.isHidden = false
+            multiLabel.text = "3X"
+            multiLabel.fontSize = 26.0
+            multiLabel.fontColor = .orange
             puffer.createFatguAnimation()
             puffer.run(puffer.fatguAction)
             puffer.setScale(0.80)
@@ -225,10 +259,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 carrotTime()
             }
         }
+        if collision == PhysicsCategory.Ally | PhysicsCategory.Letter {
+            if !letter.isHidden{
+                letterGot()
+            }
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
         //        Your code here
+    }
+    
+    func spawnLetter(){
+        letter.isHidden = false
+        print("letter spawned")
+        notHit = 0
+        letter.run(SKAction.setTexture(powerLetters[letterCount]))
+    }
+    
+    func letterGot(){
+        letter.isHidden = true
+        print("got a letter")
+        if letterCount <= 3 {
+            letterCount += 1
+        }
+        if letterCount == 4 {
+            superFugu()
+        }
+    }
+    
+    func superFugu(){
+        print("super fugu!")
+        letterCount = 0
+        puffer.damageable = false
+        puffer.golden = true
+//        let puffAlpha = SKAction.fadeAlpha(to: 0.5, duration: 0.3)
+//        let wait = SKAction.wait(forDuration: 0.1)
+//        let puffAlpha2 = SKAction.fadeAlpha(to: 1.0, duration: 0.3)
+        
+        puffer.run(SKAction.sequence([SKAction.run{
+            self.puffer.createSuperGuAnimation()
+            self.puffer.run(self.puffer.superGuAction)
+        },SKAction.wait(forDuration: 10.0), SKAction.run{
+            self.puffer.damageable = true
+            self.puffer.golden = false
+            self.puffer.createAnimation()
+            self.puffer.run(self.puffer.idleAnimation)
+        }
+                                     ]))
     }
     
     func spawnBullet3(enemy:SKSpriteNode){
@@ -377,21 +455,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval = 50000.0) {
         if pufferState == 0 {
             gameScore += 1
+            notHit += 1
         }
         else if pufferState == 1 {
             gameScore += 3
+            notHit += 3
         }
         else if pufferState == 2 {
             gameScore += 6
+            notHit += 6
         }
         
         if gameScore >= mod {
             mod = mod + 1500
             spawnCarrot()
         }
+        
+        if notHit >= 1000 {
+            spawnLetter()
+        }
     }
     
     override func didMove(to view: SKView) {
+        powerLetters = [power.textureNamed("F"), power.textureNamed("U"), power.textureNamed("G"), power.textureNamed("U2")]
         let xRange = SKRange(lowerLimit:-(self.frame.width/2 - 10), upperLimit:self.frame.width/2 - 10)
         let yRange = SKRange(lowerLimit:-(self.frame.height/2 - 10), upperLimit:self.frame.height/2 - 10)
         puffer.constraints = [SKConstraint.positionX(xRange, y: yRange)] // This is to prevent Fugu from going into the endless abyss that awaits outside the phone screen.
@@ -404,11 +490,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.isDynamic = false
         self.physicsBody!.restitution = 0
         view.ignoresSiblingOrder = true
-        view.showsPhysics = false
+        view.showsPhysics = true
         view.showsFPS = false
         view.showsNodeCount = false
         addChild(worldNode)
         physicsWorld.contactDelegate = self
+        
         puffer.position = CGPoint(x:0, y:0)
         puffer.physicsBody?.affectedByGravity = false
         puffer.physicsBody?.isDynamic = false
@@ -418,7 +505,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         puffer.physicsBody = SKPhysicsBody(circleOfRadius: puffer.size.height/5)
         puffer.physicsBody?.categoryBitMask = PhysicsCategory.Ally
         puffer.physicsBody?.collisionBitMask = PhysicsCategory.Wall
-        puffer.physicsBody?.contactTestBitMask = PhysicsCategory.Bullet | PhysicsCategory.Enemy | PhysicsCategory.Carrot | PhysicsCategory.Dog | PhysicsCategory.Wall
+        puffer.physicsBody?.contactTestBitMask = PhysicsCategory.Bullet | PhysicsCategory.Enemy | PhysicsCategory.Carrot | PhysicsCategory.Letter | PhysicsCategory.Wall
         addChild(puffer)
         
         scoreLabel = SKLabelNode(fontNamed: "Bubble Pixel-7 Dark")
@@ -429,6 +516,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 70)
         scoreLabel.zPosition = 2
         worldNode.addChild(scoreLabel)
+        
+        multiLabel = SKLabelNode(fontNamed: "Bubble Pixel-7 Dark")
+        multiLabel.fontSize = 22.0
+        multiLabel.text = "1X"
+        multiLabel.fontColor = .white
+        multiLabel.horizontalAlignmentMode = .center
+        multiLabel.position = CGPoint(x: self.frame.width/2 - 35, y: self.frame.height/2 - 69)
+        multiLabel.zPosition = 2
+        multiLabel.isHidden = true
+        worldNode.addChild(multiLabel)
         
         carrot.position = CGPoint(x:0, y:0)
         carrot.zPosition = 3
@@ -441,14 +538,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         carrot.isHidden = true
         worldNode.addChild(carrot)
         
+        letter = SKSpriteNode(imageNamed: "F")
+        letter.position = CGPoint(x: 60, y: 60)
+        letter.zPosition = 3
+        letter.setScale(0.5)
+        letter.physicsBody = SKPhysicsBody(circleOfRadius: letter.size.height/3)
+        letter.physicsBody?.pinned = true
+        letter.physicsBody?.categoryBitMask = PhysicsCategory.Letter
+        letter.physicsBody?.collisionBitMask = PhysicsCategory.None
+        letter.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
+        letter.isHidden = true
+        worldNode.addChild(letter)
+        
         blackBox.position = CGPoint(x: 0, y:0)
         blackBox.alpha = 0.0
         blackBox.zPosition = 2
         addChild(blackBox)
         
         banner.size.height = self.frame.height/9
-        banner.size.width = self.frame.width
-        banner.position = CGPoint(x: 0, y: self.frame.height/2 - 50)
+        banner.size.width = self.frame.width/2 + 70
+        banner.position = CGPoint(x: 0, y: self.frame.height/2 - 40)
         banner.zPosition = 0
         addChild(banner)
         
