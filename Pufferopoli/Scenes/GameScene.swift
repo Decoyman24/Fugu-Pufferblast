@@ -17,6 +17,7 @@ struct PhysicsCategory {
     static let Wall: UInt32 = 0b1000 // 4
     static let Letter: UInt32 = 0b10000 // 8
     static let Carrot: UInt32 = 0b100000 // 16
+    static let Enemy2: UInt32 = 0b1000000 //3 2
 }
 
 let randomNumber = arc4random_uniform(2)
@@ -36,8 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var puffer = Puffer()
     var scoreLabel: SKLabelNode!
     var mod = 1500
-    var notHit = 0
-    var letterCount = 0
+    var notHit = 996
+    var letterCount = 3
     var carrotSpawned = false
     var controlling = false
     var carrotTaken = false
@@ -47,6 +48,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var newEnemy = SKSpriteNode()
     var newEnemy2 = SKSpriteNode()
     var newEnemy3 = SKSpriteNode()
+    var letter1 = SKSpriteNode(imageNamed: "F")
+    var letter2 = SKSpriteNode(imageNamed: "U")
+    var letter3 = SKSpriteNode(imageNamed: "G")
+    var letter4 = SKSpriteNode(imageNamed: "U")
     var pufferState : Int = 0
     var letter = SKSpriteNode()
     let background = SKSpriteNode(imageNamed: "Background")
@@ -113,6 +118,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         carrot.isHidden = true
         carrotTaken = true
         SKTAudio.sharedInstance().playSoundEffect("Carrot.mp3")
+        puffer.removeAllActions()
         let puffAlpha = SKAction.fadeAlpha(to: 0.5, duration: 0.50)
         let wait = SKAction.wait(forDuration: 0.25)
         let puffAlpha2 = SKAction.fadeAlpha(to: 1.0, duration: 0.50)
@@ -177,6 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait, SKAction.run{self.puffer.damageable = true}]))
         if pufferState == 1 {
+            
             multiLabel.isHidden = false
             multiLabel.text = "2X"
             multiLabel.fontSize = 24.0
@@ -240,9 +247,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func enemyDie(){
+        let boom = SKSpriteNode(imageNamed: "boom")
+        newEnemy.removeAllActions()
+        newEnemy.isHidden = true
+        boom.position = newEnemy.position
+        boom.zPosition = 3
+        boom.setScale(0.2)
+        addChild(boom)
+        boom.run(SKAction.sequence([SKAction.wait(forDuration: 0.4), SKAction.removeFromParent()
+        ]))
+        gameScore += 1000
+        carrotSpawned = true
+    }
+    
+    func enemy2Die(){
+        let boom = SKSpriteNode(imageNamed: "boom")
+        newEnemy2.removeAllActions()
+        newEnemy2.isHidden = true
+        boom.position = newEnemy2.position
+        boom.zPosition = 3
+        boom.setScale(0.2)
+        addChild(boom)
+        boom.run(SKAction.sequence([SKAction.wait(forDuration: 0.4), SKAction.removeFromParent()
+        ]))
+        gameScore += 1000
+        carrotSpawned = true
+    }
+    
+    
     func didBegin(_ contact: SKPhysicsContact) {
         let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         //        let contactPoint = contact.contactPoint
+        if puffer.golden {
+            
+            if collision == PhysicsCategory.Enemy | PhysicsCategory.Ally {
+                enemyDie()
+            }
+            if collision == PhysicsCategory.Ally | PhysicsCategory.Enemy {
+                enemyDie()
+            }
+            if collision == PhysicsCategory.Enemy2 | PhysicsCategory.Ally {
+                enemy2Die()
+            }
+            if collision == PhysicsCategory.Ally | PhysicsCategory.Enemy2 {
+                enemy2Die()
+            }
+    }
         if puffer.damageable {
             if collision == PhysicsCategory.Bullet | PhysicsCategory.Ally {
                 bulletHit()
@@ -251,6 +302,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 enemyHit()
             }
             if collision == PhysicsCategory.Ally | PhysicsCategory.Enemy {
+                enemyHit()
+            }
+            if collision == PhysicsCategory.Enemy2 | PhysicsCategory.Ally {
+                enemyHit()
+            }
+            if collision == PhysicsCategory.Ally | PhysicsCategory.Enemy2 {
                 enemyHit()
             }
         }
@@ -279,37 +336,83 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func letterGot(){
         letter.isHidden = true
-        print("got a letter")
-        if letterCount <= 3 {
+        
+        switch letterCount {
+        case 0:
+//            letter1.isHidden = false
             letterCount += 1
-        }
-        if letterCount == 4 {
+        case 1:
+//            letter1.isHidden = false
+//            letter2.isHidden = false
+            letterCount += 1
+        case 2:
+//            letter1.isHidden = false
+//            letter2.isHidden = false
+//            letter3.isHidden = false
+            letterCount += 1
+        case 3:
+//            letter1.isHidden = false
+//            letter2.isHidden = false
+//            letter3.isHidden = false
+//            letter4.isHidden = false
             superFugu()
+
+        default:
+            letter1.isHidden = true
+            letter2.isHidden = true
+            letter3.isHidden = true
+            letter4.isHidden = true
         }
+        
+//        print("got a letter")
+//        if letterCount <= 3 {
+//            letterCount += 1
+//        }
+//        if letterCount == 4 {
+//            superFugu()
+//        }
+       
     }
     
     func superFugu(){
         print("super fugu!")
         letterCount = 0
+        puffer.setScale(0.5)
+        puffer.removeAllActions()
         puffer.damageable = false
         puffer.golden = true
-//        let puffAlpha = SKAction.fadeAlpha(to: 0.5, duration: 0.3)
-//        let wait = SKAction.wait(forDuration: 0.1)
-//        let puffAlpha2 = SKAction.fadeAlpha(to: 1.0, duration: 0.3)
+        scoreLabel.fontColor = .yellow
+        let puffAlpha = SKAction.fadeAlpha(to: 0.5, duration: 0.3)
+        let wait = SKAction.wait(forDuration: 0.1)
+        let puffAlpha2 = SKAction.fadeAlpha(to: 1.0, duration: 0.3)
         
         puffer.run(SKAction.sequence([SKAction.run{
             self.puffer.createSuperGuAnimation()
             self.puffer.run(self.puffer.superGuAction)
-        },SKAction.wait(forDuration: 10.0), SKAction.run{
+        },SKAction.wait(forDuration: 8.0), puffAlpha, wait, puffAlpha2, puffAlpha, wait, puffAlpha2, puffAlpha, wait, puffAlpha2, SKAction.run{
             self.puffer.damageable = true
             self.puffer.golden = false
             self.puffer.createAnimation()
             self.puffer.run(self.puffer.idleAnimation)
+            self.carrotSpawned = false
+            self.pufferState = 0
+            self.puffer.removeAllActions()
+            self.multiLabel.isHidden = true
+            self.puffer.createAnimation()
+            self.puffer.run(self.puffer.idleAnimation)
+            self.puffer.setScale(0.25)
+            self.puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait,puffAlpha, wait, puffAlpha2, wait, puffAlpha, wait, puffAlpha2, SKAction.run{self.puffer.damageable = true}, (SKAction.wait(forDuration: 2)), (SKAction.run{self.carrotTaken = false})]))
+//            self.letter1.isHidden = true
+//            self.letter2.isHidden = true
+//            self.letter3.isHidden = true
+//            self.letter4.isHidden = true
+            self.scoreLabel.fontColor = .white
         }
                                      ]))
     }
     
-    func spawnBullet3(enemy:SKSpriteNode){
+    func spawnBullet3(enemy:SKSpriteNode) {
+        if !newEnemy.isHidden{
         let Bullet = SKSpriteNode(imageNamed: "bubble")
         let bulletPop = SKTexture(imageNamed: "bubblepop")
         Bullet.zPosition = 1
@@ -327,8 +430,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Bullet.physicsBody?.isDynamic = false
         worldNode.addChild(Bullet)
     }
+    }
     
     func spawnBullet4(enemy:SKSpriteNode){
+        if !newEnemy2.isHidden {
         let Bullet = SKSpriteNode(imageNamed: "bubble")
         let bulletPop = SKTexture(imageNamed: "bubblepop")
         Bullet.zPosition = 1
@@ -346,6 +451,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Bullet.physicsBody?.isDynamic = false
         worldNode.addChild(Bullet)
     }
+    }
     
     func spawnEnemy() {
         let vortex = SKSpriteNode(imageNamed: "Vortexopoli")
@@ -355,13 +461,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createEnemyAnimation()
         createBubbleAnimation()
         newEnemy2 = SKSpriteNode(texture: idleFrames[0])
+        newEnemy2.isHidden = false
         enemies.append(newEnemy2)
         newEnemy2.alpha = 0
         newEnemy2.setScale(0.5)
         newEnemy2.zPosition = 2
         newEnemy2.position = enemyPositions.randomElement()!
         newEnemy2.physicsBody = SKPhysicsBody(circleOfRadius: newEnemy2.size.height/4)
-        newEnemy2.physicsBody?.categoryBitMask = PhysicsCategory.Enemy
+        newEnemy2.physicsBody?.categoryBitMask = PhysicsCategory.Enemy2
         newEnemy2.physicsBody!.collisionBitMask = PhysicsCategory.None
         newEnemy2.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
         newEnemy2.physicsBody?.affectedByGravity = false
@@ -378,13 +485,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         for e in enemies
         {
-            let wait = SKAction.wait(forDuration: 1.0)
+            let wait = SKAction.wait(forDuration: 0.5)
             let run = SKAction.run {
+                if !self.newEnemy2.isHidden{
                 self.spawnBullet4(enemy: e)
+                }
             }
             e.run(SKAction.repeatForever(SKAction.sequence([wait, run])))
         }
-        //        enemies.removeAll()
+                enemies.removeLast()
     }
     
     func spawnLilEnemy() {
@@ -395,6 +504,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createMaleniaAnimation()
         createBubbleAnimation()
         newEnemy = SKSpriteNode(texture: idleMalenia[0])
+        newEnemy.isHidden = false
         enemies.append(newEnemy)
         newEnemy.setScale(0.5)
         newEnemy.zPosition = 2
@@ -417,12 +527,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         newEnemy.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
         for e in enemies
         {
-            let wait = SKAction.wait(forDuration: 0.5)
+            let wait = SKAction.wait(forDuration: 0.25)
             let run = SKAction.run {
+                if !self.newEnemy.isHidden{
                 self.spawnBullet3(enemy: e)
+                }
             }
             e.run(SKAction.repeatForever(SKAction.sequence([wait, run])))
         }
+        enemies.removeLast()
     }
     
     //    func spawnThirdEnemy() {
@@ -490,7 +603,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.isDynamic = false
         self.physicsBody!.restitution = 0
         view.ignoresSiblingOrder = true
-        view.showsPhysics = true
+        view.showsPhysics = false
         view.showsFPS = false
         view.showsNodeCount = false
         addChild(worldNode)
@@ -516,6 +629,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 70)
         scoreLabel.zPosition = 2
         worldNode.addChild(scoreLabel)
+        
+//        Power letters in HUD
+        letter1.setScale(0.2)
+        letter2.setScale(0.2)
+        letter3.setScale(0.2)
+        letter4.setScale(0.2)
+        letter1.zPosition = 2
+        letter2.zPosition = 2
+        letter3.zPosition = 2
+        letter4.zPosition = 2
+        letter1.position = CGPoint(x: -30, y: scoreLabel.position.y - 15)
+        letter2.position = CGPoint(x: -10, y: scoreLabel.position.y - 15)
+        letter3.position = CGPoint(x: 10, y: scoreLabel.position.y - 15)
+        letter4.position = CGPoint(x: 30, y: scoreLabel.position.y - 15)
+        letter1.isHidden = true
+        letter2.isHidden = true
+        letter3.isHidden = true
+        letter4.isHidden = true
+        addChild(letter1)
+        addChild(letter2)
+        addChild(letter3)
+        addChild(letter4)
+        
         
         multiLabel = SKLabelNode(fontNamed: "Bubble Pixel-7 Dark")
         multiLabel.fontSize = 22.0
@@ -573,4 +709,3 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
-
