@@ -248,6 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func enemyDie(){
+        SKTAudio.sharedInstance().playSoundEffect("FuguSlice.mp3")
         let boom = SKSpriteNode(imageNamed: "boom")
         newEnemy.removeAllActions()
         newEnemy.isHidden = true
@@ -262,6 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func enemy2Die(){
+        SKTAudio.sharedInstance().playSoundEffect("FuguSlice.mp3")
         let boom = SKSpriteNode(imageNamed: "boom")
         newEnemy2.removeAllActions()
         newEnemy2.isHidden = true
@@ -282,16 +284,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if puffer.golden {
             
             if collision == PhysicsCategory.Enemy | PhysicsCategory.Ally {
+                if !newEnemy.isHidden{
                 enemyDie()
+                }
             }
             if collision == PhysicsCategory.Ally | PhysicsCategory.Enemy {
+                if !newEnemy.isHidden{
                 enemyDie()
+                }
             }
             if collision == PhysicsCategory.Enemy2 | PhysicsCategory.Ally {
+                if !newEnemy2.isHidden{
                 enemy2Die()
+                }
             }
             if collision == PhysicsCategory.Ally | PhysicsCategory.Enemy2 {
+                if !newEnemy2.isHidden{
                 enemy2Die()
+                }
             }
     }
         if puffer.damageable {
@@ -299,16 +309,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bulletHit()
             }
             if collision == PhysicsCategory.Enemy | PhysicsCategory.Ally {
+                if !newEnemy.isHidden{
                 enemyHit()
+                }
             }
             if collision == PhysicsCategory.Ally | PhysicsCategory.Enemy {
+                if !newEnemy.isHidden{
                 enemyHit()
+                }
             }
             if collision == PhysicsCategory.Enemy2 | PhysicsCategory.Ally {
+                if !newEnemy2.isHidden{
                 enemyHit()
+                }
             }
             if collision == PhysicsCategory.Ally | PhysicsCategory.Enemy2 {
+                if !newEnemy2.isHidden{
                 enemyHit()
+                }
             }
         }
         if collision == PhysicsCategory.Ally | PhysicsCategory.Carrot {
@@ -375,10 +393,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func superFugu(){
+        SKTAudio.sharedInstance().backgroundMusicPlayer?.prepareToPlay()
+        SKTAudio.sharedInstance().playBackgroundMusic("SuperFugu.mp3")
         print("super fugu!")
         letterCount = 0
         puffer.setScale(0.5)
         puffer.removeAllActions()
+        carrotSpawned = true
         puffer.damageable = false
         puffer.golden = true
         scoreLabel.fontColor = .yellow
@@ -399,9 +420,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.puffer.removeAllActions()
             self.multiLabel.isHidden = true
             self.puffer.createAnimation()
+            SKTAudio.sharedInstance().backgroundMusicPlayer?.prepareToPlay()
+            SKTAudio.sharedInstance().playBackgroundMusic("Fugu.mp3")
             self.puffer.run(self.puffer.idleAnimation)
             self.puffer.setScale(0.25)
-            self.puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait,puffAlpha, wait, puffAlpha2, wait, puffAlpha, wait, puffAlpha2, SKAction.run{self.puffer.damageable = true}, (SKAction.wait(forDuration: 2)), (SKAction.run{self.carrotTaken = false})]))
+            self.puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait,puffAlpha, wait, puffAlpha2, wait, puffAlpha, wait, puffAlpha2, SKAction.run{self.puffer.damageable = true
+            }, (SKAction.wait(forDuration: 2)), (SKAction.run{self.carrotTaken = false})]))
 //            self.letter1.isHidden = true
 //            self.letter2.isHidden = true
 //            self.letter3.isHidden = true

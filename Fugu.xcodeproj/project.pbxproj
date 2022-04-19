@@ -20,6 +20,8 @@
 		1C006DC827E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */; };
 		1C04ECA727FC720600E65936 /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
 		1C04ECA827FC720600E65936 /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
+		1C350659280EFCA600EE4806 /* FuguSlice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C350658280EFCA600EE4806 /* FuguSlice.mp3 */; };
+		1C35065B280EFCB000EE4806 /* SuperFugu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C35065A280EFCB000EE4806 /* SuperFugu.mp3 */; };
 		1C8594A227FF2C1500750CF4 /* Slashed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A127FF2C1500750CF4 /* Slashed.mp3 */; };
 		1C8594A427FF2FDD00750CF4 /* Carrot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */; };
 		1C8594A628046BD400750CF4 /* BubblePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A528046BD400750CF4 /* BubblePixel.ttf */; };
@@ -71,6 +73,8 @@
 		1C006DC127E8CC2900532F95 /* PufferopoliUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PufferopoliUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C006DC527E8CC2900532F95 /* PufferopoliUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITests.swift; sourceTree = "<group>"; };
 		1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1C350658280EFCA600EE4806 /* FuguSlice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FuguSlice.mp3; sourceTree = "<group>"; };
+		1C35065A280EFCB000EE4806 /* SuperFugu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SuperFugu.mp3; sourceTree = "<group>"; };
 		1C8594A127FF2C1500750CF4 /* Slashed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slashed.mp3; sourceTree = "<group>"; };
 		1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Carrot.mp3; sourceTree = "<group>"; };
 		1C8594A528046BD400750CF4 /* BubblePixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BubblePixel.ttf; sourceTree = "<group>"; };
@@ -213,7 +217,9 @@
 				1CD8618927ECB209005B4357 /* Hit1.mp3 */,
 				1CD8618C27ECB211005B4357 /* Hit2.mp3 */,
 				1CD8618B27ECB210005B4357 /* Hit3.mp3 */,
+				1C350658280EFCA600EE4806 /* FuguSlice.mp3 */,
 				1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */,
+				1C35065A280EFCB000EE4806 /* SuperFugu.mp3 */,
 				1CD8619127ECB3C4005B4357 /* CarrotSpawn.mp3 */,
 			);
 			path = Sounds;
@@ -339,6 +345,8 @@
 				1CD8618D27ECB211005B4357 /* Hit3.mp3 in Resources */,
 				1C8594A427FF2FDD00750CF4 /* Carrot.mp3 in Resources */,
 				1C006DA627E8CC2800532F95 /* Actions.sks in Resources */,
+				1C350659280EFCA600EE4806 /* FuguSlice.mp3 in Resources */,
+				1C35065B280EFCB000EE4806 /* SuperFugu.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
