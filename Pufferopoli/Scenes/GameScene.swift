@@ -48,6 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var newEnemy = SKSpriteNode()
     var newEnemy2 = SKSpriteNode()
     var newEnemy3 = SKSpriteNode()
+    var letterSpawn = true
     var letter1 = SKSpriteNode(imageNamed: "F")
     var letter2 = SKSpriteNode(imageNamed: "U")
     var letter3 = SKSpriteNode(imageNamed: "G")
@@ -304,6 +305,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
     }
+        
         if puffer.damageable {
             if collision == PhysicsCategory.Bullet | PhysicsCategory.Ally {
                 bulletHit()
@@ -402,6 +404,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         carrotSpawned = true
         puffer.damageable = false
         puffer.golden = true
+        letterSpawn = false
         scoreLabel.fontColor = .yellow
         let puffAlpha = SKAction.fadeAlpha(to: 0.5, duration: 0.3)
         let wait = SKAction.wait(forDuration: 0.1)
@@ -424,7 +427,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             SKTAudio.sharedInstance().playBackgroundMusic("Fugu.mp3")
             self.puffer.run(self.puffer.idleAnimation)
             self.puffer.setScale(0.25)
-            self.puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait,puffAlpha, wait, puffAlpha2, wait, puffAlpha, wait, puffAlpha2, SKAction.run{self.puffer.damageable = true
+            self.puffer.run(SKAction.sequence([puffAlpha, wait, puffAlpha2, wait,puffAlpha, wait, puffAlpha2, wait, puffAlpha, wait, puffAlpha2, SKAction.wait(forDuration: 0.5), SKAction.run{
+                self.letterSpawn = true
+                self.puffer.damageable = true
             }, (SKAction.wait(forDuration: 2)), (SKAction.run{self.carrotTaken = false})]))
 //            self.letter1.isHidden = true
 //            self.letter2.isHidden = true
@@ -485,8 +490,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createEnemyAnimation()
         createBubbleAnimation()
         newEnemy2 = SKSpriteNode(texture: idleFrames[0])
-        newEnemy2.isHidden = false
         enemies.append(newEnemy2)
+        newEnemy2.isHidden = true
         newEnemy2.alpha = 0
         newEnemy2.setScale(0.5)
         newEnemy2.zPosition = 2
@@ -500,7 +505,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         vortex.position = newEnemy2.position
         worldNode.addChild(vortex)
         vortex.run(bubbleAnimation)
-        vortex.run(SKAction.sequence([(SKAction.fadeAlpha(to: 0.8, duration: 0.1)), SKAction.rotate(byAngle: 10, duration: 0.8), (SKAction.wait(forDuration: 0.2)), SKAction.run{self.worldNode.addChild(self.newEnemy2)
+        vortex.run(SKAction.sequence([(SKAction.fadeAlpha(to: 0.8, duration: 0.1)), SKAction.rotate(byAngle: 10, duration: 0.8), (SKAction.wait(forDuration: 0.2)), SKAction.run{
+            self.worldNode.addChild(self.newEnemy2)
+            self.newEnemy2.isHidden = false
             self.newEnemy2.run(SKAction.fadeAlpha(to: 1, duration: 0.2))
         }, (SKAction.wait(forDuration: 0.2)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
         
@@ -528,8 +535,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createMaleniaAnimation()
         createBubbleAnimation()
         newEnemy = SKSpriteNode(texture: idleMalenia[0])
-        newEnemy.isHidden = false
         enemies.append(newEnemy)
+        newEnemy.isHidden = true
         newEnemy.setScale(0.5)
         newEnemy.zPosition = 2
         newEnemy.position = smallEnemyPositions.randomElement()!
@@ -543,7 +550,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.addChild(vortex)
         vortex.run(bubbleAnimation)
         
-        vortex.run(SKAction.sequence([(SKAction.fadeAlpha(to: 0.8, duration: 0.1)), SKAction.rotate(byAngle: 10, duration: 0.8), (SKAction.wait(forDuration: 0.2)), SKAction.run{self.worldNode.addChild(self.newEnemy)
+        vortex.run(SKAction.sequence([(SKAction.fadeAlpha(to: 0.8, duration: 0.1)), SKAction.rotate(byAngle: 10, duration: 0.8), (SKAction.wait(forDuration: 0.2)), SKAction.run{
+            self.worldNode.addChild(self.newEnemy)
+            self.newEnemy.isHidden = false
             self.newEnemy.run(SKAction.fadeAlpha(to: 1, duration: 0.2))
         }, (SKAction.wait(forDuration: 0.2)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
         
@@ -609,7 +618,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if notHit >= 1000 {
+            notHit = 0
+            if letterSpawn {
             spawnLetter()
+            }
         }
     }
     
