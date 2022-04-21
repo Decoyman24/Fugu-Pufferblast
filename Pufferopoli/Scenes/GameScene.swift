@@ -37,8 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var puffer = Puffer()
     var scoreLabel: SKLabelNode!
     var mod = 1500
-    var notHit = 996
-    var letterCount = 3
+    var notHit = 0
+    var letterCount = 0
     var carrotSpawned = false
     var controlling = false
     var carrotTaken = false
@@ -512,7 +512,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }, (SKAction.wait(forDuration: 0.2)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
         
         newEnemy2.run(enemyAnimation)
-        newEnemy2.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
+        newEnemy2.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)),
+                                         SKAction.run{
+            self.newEnemy2.isHidden = true
+        }, (SKAction.removeFromParent())]))
         
         for e in enemies
         {
@@ -557,7 +560,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }, (SKAction.wait(forDuration: 0.2)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
         
         newEnemy.run(maleniaAction)
-        newEnemy.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), (SKAction.removeFromParent())]))
+        newEnemy.run(SKAction.sequence([(SKAction.wait(forDuration: 2.0)), (SKAction.fadeAlpha(to: 0.0, duration: 0.2)), SKAction.run{
+            self.newEnemy.isHidden = true
+        }, (SKAction.removeFromParent())]))
         for e in enemies
         {
             let wait = SKAction.wait(forDuration: 0.25)
@@ -740,7 +745,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if !worldNode.isPaused {
             self.run(SKAction.repeatForever(SKAction.sequence([SKAction.run{self.spawnEnemy()}, SKAction.wait(forDuration: 2.5)])))
-            self.run(SKAction.repeatForever(SKAction.sequence([SKAction.run{self.spawnLilEnemy()}, SKAction.wait(forDuration: 2.0)])))
+            self.run(SKAction.repeatForever(SKAction.sequence([SKAction.run{self.spawnLilEnemy()}, SKAction.wait(forDuration: 3.0)])))
             //            self.run(SKAction.repeatForever(SKAction.sequence([SKAction.run{self.spawnThirdEnemy()}, SKAction.wait(forDuration: 2.5)])))
         }
     }
