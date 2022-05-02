@@ -291,7 +291,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         carrotSpawned = true
     }
     
-    
     func didBegin(_ contact: SKPhysicsContact) {
         let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         //        let contactPoint = contact.contactPoint
