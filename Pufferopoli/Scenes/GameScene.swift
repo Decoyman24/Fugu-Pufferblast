@@ -37,8 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var puffer = Puffer()
     var scoreLabel: SKLabelNode!
     var mod = 1500
-    var notHit = 0
-    var letterCount = 0
+    var notHit = 992
+    var letterCount = 3
     var carrotSpawned = false
     var controlling = false
     var carrotTaken = false
@@ -82,9 +82,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if controlling {
-            let touch = touches.first
-            if let location = touch?.location(in: self){
-                puffer.run(SKAction.move(to: CGPoint(x:  nodePosition.x + location.x - startTouch.x, y: nodePosition.y + location.y - startTouch.y), duration: 0.1))
+            if puffer.golden {
+                let touch = touches.first
+                if let location = touch?.location(in: self){
+                    puffer.run(SKAction.move(to: CGPoint(x:  nodePosition.x + location.x - startTouch.x, y: nodePosition.y + location.y - startTouch.y), duration: 0.01))
+                }
+            }
+            else {
+                let touch = touches.first
+                if let location = touch?.location(in: self){
+                    puffer.run(SKAction.move(to: CGPoint(x:  nodePosition.x + location.x - startTouch.x, y: nodePosition.y + location.y - startTouch.y), duration: 0.1))
+                }
             }
         }
     }
@@ -257,10 +265,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         newEnemy.removeAllActions()
         newEnemy.isHidden = true
         boom.position = newEnemy.position
-        boom.zPosition = 3
-        boom.setScale(0.2)
+        boom.zPosition = 4
+        boom.setScale(0.7)
         addChild(boom)
-        boom.run(SKAction.sequence([SKAction.wait(forDuration: 0.4), SKAction.removeFromParent()
+        createSliceAnimation()
+        boom.run(SKAction.sequence([sliceAction, SKAction.removeFromParent()
                                    ]))
         gameScore += 1000
         carrotSpawned = true
@@ -272,10 +281,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         newEnemy2.removeAllActions()
         newEnemy2.isHidden = true
         boom.position = newEnemy2.position
-        boom.zPosition = 3
-        boom.setScale(0.2)
+        boom.zPosition = 4
+        boom.setScale(0.7)
         addChild(boom)
-        boom.run(SKAction.sequence([SKAction.wait(forDuration: 0.4), SKAction.removeFromParent()
+        createSliceAnimation()
+        boom.run(SKAction.sequence([sliceAction, SKAction.removeFromParent()
                                    ]))
         gameScore += 1000
         carrotSpawned = true
@@ -411,6 +421,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         letterCount = 0
         puffer.setScale(0.5)
         puffer.removeAllActions()
+        carrot.isHidden = true
         carrotSpawned = true
         puffer.damageable = false
         puffer.golden = true
