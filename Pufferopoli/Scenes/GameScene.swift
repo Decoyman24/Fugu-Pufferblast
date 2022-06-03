@@ -264,6 +264,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let boom = SKSpriteNode(imageNamed: "boom")
         newEnemy.removeAllActions()
         newEnemy.isHidden = true
+        newEnemy.removeFromParent()
         boom.position = newEnemy.position
         boom.zPosition = 4
         boom.setScale(0.7)
@@ -280,6 +281,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let boom = SKSpriteNode(imageNamed: "boom")
         newEnemy2.removeAllActions()
         newEnemy2.isHidden = true
+        newEnemy2.removeFromParent()
         boom.position = newEnemy2.position
         boom.zPosition = 4
         boom.setScale(0.7)
@@ -440,6 +442,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.puffer.run(self.puffer.idleAnimation)
             self.carrotSpawned = false
             self.pufferState = 0
+            self.notHit = 0
             self.puffer.removeAllActions()
             self.multiLabel.isHidden = true
             self.puffer.createAnimation()
