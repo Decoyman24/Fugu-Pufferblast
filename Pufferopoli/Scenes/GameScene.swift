@@ -36,9 +36,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var worldNode = SKNode()
     var puffer = Puffer()
     var scoreLabel: SKLabelNode!
-    var mod = 1500
-    var notHit = 992
-    var letterCount = 3
+    var mod = 2000
+    var notHit = 0
+    var letterCount = 0
     var carrotSpawned = false
     var controlling = false
     var carrotTaken = false
