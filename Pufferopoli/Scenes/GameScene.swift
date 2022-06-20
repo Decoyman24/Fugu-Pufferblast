@@ -48,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var newEnemy = SKSpriteNode()
     var newEnemy2 = SKSpriteNode()
     var newEnemy3 = SKSpriteNode()
-    var pickup = SKSpriteNode()
+//    var pickup = SKSpriteNode()
     var letterSpawn = true
     var letter1 = SKSpriteNode(imageNamed: "F")
     var letter2 = SKSpriteNode(imageNamed: "U")
@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let enemyPositions: [CGPoint] = [CGPoint(x:-160, y:288),CGPoint(x:160, y:288),CGPoint(x:160, y:-288),CGPoint(x:-160, y:-288)]
     let smallEnemyPositions: [CGPoint] = [CGPoint(x:0, y:288),CGPoint(x:0, y:-288),CGPoint(x:180, y:0),CGPoint(x:-180, y:0)]
     let thirdEnemyPositions: [CGPoint] = [CGPoint(x: -140, y:330),CGPoint(x:140, y:300),CGPoint(x:-140, y:-330),CGPoint(x:140, y:300)]
-    
+    let lettersPositions: [CGPoint] = [CGPoint(x: -60, y:60),CGPoint(x:60, y:-60),CGPoint(x:-60, y:-60),CGPoint(x:60, y:60)]
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         controlling = true
         let touch = touches.first
@@ -131,7 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         carrotTaken = true
         SKTAudio.sharedInstance().playSoundEffect("Carrot.mp3")
         puffer.removeAllActions()
-        let puffAlpha = SKAction.fadeAlpha(to: 0.5, duration: 0.50)
+        let puffAlpha = SKAction.fadeAlpha(to: 0.3, duration: 0.50)
         let wait = SKAction.wait(forDuration: 0.25)
         let puffAlpha2 = SKAction.fadeAlpha(to: 1.0, duration: 0.50)
         puffer.damageable = false
@@ -361,41 +361,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        Your code here
     }
     
-    func spawnLetter(){
-        letter.isHidden = false
-        print("letter spawned")
-        notHit = 0
-        letter.run(SKAction.setTexture(powerLetters[letterCount]))
-    }
+//    func spawnLetter(){
+//        letter.run(SKAction.move(to: lettersPositions.randomElement()!, duration: 0.1))
+//        letter.isHidden = false
+//        print("letter spawned")
+//        notHit = 0
+//        letter.run(SKAction.setTexture(powerLetters[letterCount]))
+//    }
     
     func letterGot(){
         letter.isHidden = true
         
         switch letterCount {
         case 0:
-            //            letter1.isHidden = false
+                        letter1.isHidden = false
             letterCount += 1
-            pickup.run(SKAction.setTexture(indicators[letterCount]))
+//            pickup.run(SKAction.setTexture(indicators[letterCount]))
         case 1:
-            //            letter1.isHidden = false
-            //            letter2.isHidden = false
+                        letter1.isHidden = false
+                        letter2.isHidden = false
             letterCount += 1
-            pickup.run(SKAction.setTexture(indicators[letterCount]))
+//            pickup.run(SKAction.setTexture(indicators[letterCount]))
             
         case 2:
-            //            letter1.isHidden = false
-            //            letter2.isHidden = false
-            //            letter3.isHidden = false
+                        letter1.isHidden = false
+                        letter2.isHidden = false
+                        letter3.isHidden = false
             letterCount += 1
-            pickup.run(SKAction.setTexture(indicators[letterCount]))
+//            pickup.run(SKAction.setTexture(indicators[letterCount]))
             
         case 3:
-            //            letter1.isHidden = false
-            //            letter2.isHidden = false
-            //            letter3.isHidden = false
-            //            letter4.isHidden = false
+                        letter1.isHidden = false
+                        letter2.isHidden = false
+                        letter3.isHidden = false
+                        letter4.isHidden = false
             letterCount += 1
-            pickup.run(SKAction.setTexture(indicators[letterCount]))
+//            pickup.run(SKAction.setTexture(indicators[letterCount]))
             superFugu()
             
         default:
@@ -428,14 +429,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         puffer.golden = true
         letterSpawn = false
         scoreLabel.fontColor = .yellow
-        let puffAlpha = SKAction.fadeAlpha(to: 0.5, duration: 0.3)
+        let puffAlpha = SKAction.fadeAlpha(to: 0.3, duration: 0.2)
+        let letterSize = SKAction.scale(to: 0.4, duration: 0.3)
         let wait = SKAction.wait(forDuration: 0.1)
-        let puffAlpha2 = SKAction.fadeAlpha(to: 1.0, duration: 0.3)
+        let puffAlpha2 = SKAction.fadeAlpha(to: 1.0, duration: 0.2)
+        let letterSize2 = SKAction.scale(to: 0.3, duration: 0.3)
+        let blink = SKAction.sequence([letterSize, wait, letterSize2])
+        let blinkAction = SKAction.repeatForever(blink)
+        
         
         puffer.run(SKAction.sequence([SKAction.run{
             self.puffer.createSuperGuAnimation()
             self.puffer.run(self.puffer.superGuAction)
+            self.letter1.run(blinkAction)
+            self.letter2.run(blinkAction)
+            self.letter3.run(blinkAction)
+            self.letter4.run(blinkAction)
         },SKAction.wait(forDuration: 8.0), puffAlpha, wait, puffAlpha2, puffAlpha, wait, puffAlpha2, puffAlpha, wait, puffAlpha2, SKAction.run{
+            self.letter1.removeAllActions()
+            self.letter2.removeAllActions()
+            self.letter3.removeAllActions()
+            self.letter4.removeAllActions()
             self.puffer.damageable = true
             self.puffer.golden = false
             self.puffer.createAnimation()
@@ -454,12 +468,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.letterSpawn = true
                 self.puffer.damageable = true
             }, (SKAction.wait(forDuration: 2)), (SKAction.run{self.carrotTaken = false})]))
-            //            self.letter1.isHidden = true
-            //            self.letter2.isHidden = true
-            //            self.letter3.isHidden = true
-            //            self.letter4.isHidden = true
+                        self.letter1.isHidden = true
+                        self.letter2.isHidden = true
+                        self.letter3.isHidden = true
+                        self.letter4.isHidden = true
             self.scoreLabel.fontColor = .white
-            self.pickup.run(SKAction.setTexture(self.indicators[self.letterCount]))
+//            self.pickup.run(SKAction.setTexture(self.indicators[self.letterCount]))
         }
                                      ]))
     }
@@ -628,6 +642,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //    }
     
     override func update(_ currentTime: TimeInterval = 50000.0) {
+        letter1.position = CGPoint(x: puffer.position.x - 45, y: puffer.position.y + 80)
+        letter2.position = CGPoint(x: puffer.position.x - 15, y: puffer.position.y + 80)
+        letter3.position = CGPoint(x: puffer.position.x + 15, y: puffer.position.y + 80)
+        letter4.position = CGPoint(x: puffer.position.x + 45, y: puffer.position.y + 80)
+        
         if pufferState == 0 {
             gameScore += 1
             notHit += 1
@@ -642,15 +661,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if gameScore >= mod {
-            mod = mod + 1500
+            mod = mod + 2000
             spawnCarrot()
         }
         
-        if notHit >= 1000 {
+        if notHit >= 2500 {
             notHit = 0
-            if letterSpawn {
-                spawnLetter()
-            }
+            letterGot()
         }
     }
     
@@ -673,7 +690,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.isDynamic = false
         self.physicsBody!.restitution = 0
         view.ignoresSiblingOrder = true
-        view.showsPhysics = false
+        view.showsPhysics = true
         view.showsFPS = false
         view.showsNodeCount = false
         addChild(worldNode)
@@ -702,18 +719,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.addChild(scoreLabel)
         
         //        Power letters in HUD, hidden for now they're ugly
-        letter1.setScale(0.2)
-        letter2.setScale(0.2)
-        letter3.setScale(0.2)
-        letter4.setScale(0.2)
+        letter1.setScale(0.3)
+        letter2.setScale(0.3)
+        letter3.setScale(0.3)
+        letter4.setScale(0.3)
         letter1.zPosition = 2
         letter2.zPosition = 2
         letter3.zPosition = 2
         letter4.zPosition = 2
-        letter1.position = CGPoint(x: -30, y: scoreLabel.position.y - 15)
-        letter2.position = CGPoint(x: -10, y: scoreLabel.position.y - 15)
-        letter3.position = CGPoint(x: 10, y: scoreLabel.position.y - 15)
-        letter4.position = CGPoint(x: 30, y: scoreLabel.position.y - 15)
+        letter1.position = CGPoint(x: puffer.position.x - 45, y: puffer.position.y + 85)
+        letter2.position = CGPoint(x: puffer.position.x - 15, y: puffer.position.y + 85)
+        letter3.position = CGPoint(x: puffer.position.x + 15, y: puffer.position.y + 85)
+        letter4.position = CGPoint(x: puffer.position.x + 45, y: puffer.position.y + 85)
         letter1.isHidden = true
         letter2.isHidden = true
         letter3.isHidden = true
@@ -745,7 +762,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.addChild(carrot)
         //        SET POWERLETTER
         letter = SKSpriteNode(imageNamed: "F")
-        letter.position = CGPoint(x: 60, y: 60)
+        letter.position = lettersPositions.randomElement()!
         letter.zPosition = 3
         letter.setScale(0.5)
         letter.physicsBody = SKPhysicsBody(circleOfRadius: letter.size.height/3)
@@ -772,10 +789,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.zPosition = -3
         addChild(background)
         //        SET LETTERS INDICATOR
-        pickup = SKSpriteNode(texture: indicators[letterCount])
-        pickup.setScale(0.15)
-        pickup.position = CGPoint(x: -self.frame.width/2 + 35, y: self.frame.height/2 - 45)
-        addChild(pickup)
+//        pickup = SKSpriteNode(texture: indicators[letterCount])
+//        pickup.setScale(0.15)
+//        pickup.position = CGPoint(x: -self.frame.width/2 + 35, y: self.frame.height/2 - 45)
+//        addChild(pickup)
         //    RUN RUN RUN
         if !worldNode.isPaused {
             self.run(SKAction.repeatForever(SKAction.sequence([SKAction.run{self.spawnEnemy()}, SKAction.wait(forDuration: 2.5)])))

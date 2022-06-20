@@ -26,7 +26,7 @@ class HomeScreen : SKScene {
         func touchedButton(touchLocation: CGPoint) {
             let nodeAtPoint = atPoint(touchLocation)
             if let touchedNode = nodeAtPoint as? SKSpriteNode {
-                if touchedNode.name?.starts(with: "StartButton") == true {
+                if touchedNode.name?.starts(with: "StartButton") == false {
                     let gameScene = GameScene(fileNamed: "GameScene")
                     print("moving to gameplay")
                     self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0))
