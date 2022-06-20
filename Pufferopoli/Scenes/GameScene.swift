@@ -690,7 +690,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.isDynamic = false
         self.physicsBody!.restitution = 0
         view.ignoresSiblingOrder = true
-        view.showsPhysics = true
+        view.showsPhysics = false
         view.showsFPS = false
         view.showsNodeCount = false
         addChild(worldNode)

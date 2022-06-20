@@ -26,10 +26,15 @@ class HomeScreen : SKScene {
         func touchedButton(touchLocation: CGPoint) {
             let nodeAtPoint = atPoint(touchLocation)
             if let touchedNode = nodeAtPoint as? SKSpriteNode {
-                if touchedNode.name?.starts(with: "StartButton") == false {
+                if touchedNode.name?.starts(with: "StartButton") == true {
+                    let gameScene = TutorialScreen(fileNamed: "TutorialScreen")
+                    print("moving to tutorial")
+                    self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0.4))
+                }
+                else {
                     let gameScene = GameScene(fileNamed: "GameScene")
                     print("moving to gameplay")
-                    self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0))
+                    self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0.4))
                 }
             }
         }

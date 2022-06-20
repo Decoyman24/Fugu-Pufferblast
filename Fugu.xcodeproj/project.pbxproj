@@ -39,6 +39,8 @@
 		1CD8618D27ECB211005B4357 /* Hit3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8618B27ECB210005B4357 /* Hit3.mp3 */; };
 		1CD8618E27ECB211005B4357 /* Hit2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8618C27ECB211005B4357 /* Hit2.mp3 */; };
 		1CD8619227ECB3C4005B4357 /* CarrotSpawn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1CD8619127ECB3C4005B4357 /* CarrotSpawn.mp3 */; };
+		1CFBE9F1286100E500AE0BB5 /* TutorialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBE9F0286100E500AE0BB5 /* TutorialScreen.swift */; };
+		1CFBE9F3286102CC00AE0BB5 /* TutorialScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBE9F2286102CC00AE0BB5 /* TutorialScreen.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		1CD8618B27ECB210005B4357 /* Hit3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hit3.mp3; sourceTree = "<group>"; };
 		1CD8618C27ECB211005B4357 /* Hit2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hit2.mp3; sourceTree = "<group>"; };
 		1CD8619127ECB3C4005B4357 /* CarrotSpawn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CarrotSpawn.mp3; sourceTree = "<group>"; };
+		1CFBE9F0286100E500AE0BB5 /* TutorialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen.swift; sourceTree = "<group>"; };
+		1CFBE9F2286102CC00AE0BB5 /* TutorialScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScreen.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,8 @@
 			children = (
 				1C87BD6527EB805100240F9D /* HomeScreen.swift */,
 				1C87BD6327EB7E5000240F9D /* HomeScreen.sks */,
+				1CFBE9F0286100E500AE0BB5 /* TutorialScreen.swift */,
+				1CFBE9F2286102CC00AE0BB5 /* TutorialScreen.sks */,
 				1C006DA727E8CC2800532F95 /* GameScene.swift */,
 				1C006DA327E8CC2800532F95 /* GameScene.sks */,
 				1C87BD6927EB971400240F9D /* GameOver.swift */,
@@ -343,6 +349,7 @@
 				1C006DB227E8CC2900532F95 /* LaunchScreen.storyboard in Resources */,
 				1CD8618E27ECB211005B4357 /* Hit2.mp3 in Resources */,
 				1CD8618D27ECB211005B4357 /* Hit3.mp3 in Resources */,
+				1CFBE9F3286102CC00AE0BB5 /* TutorialScreen.sks in Resources */,
 				1C8594A427FF2FDD00750CF4 /* Carrot.mp3 in Resources */,
 				1C006DA627E8CC2800532F95 /* Actions.sks in Resources */,
 				1C350659280EFCA600EE4806 /* FuguSlice.mp3 in Resources */,
@@ -374,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C006DA827E8CC2800532F95 /* GameScene.swift in Sources */,
+				1CFBE9F1286100E500AE0BB5 /* TutorialScreen.swift in Sources */,
 				1C006DAA27E8CC2800532F95 /* GameViewController.swift in Sources */,
 				1C87BD6627EB805100240F9D /* HomeScreen.swift in Sources */,
 				1CD8618627ECAE9E005B4357 /* SKTAudio.swift in Sources */,
