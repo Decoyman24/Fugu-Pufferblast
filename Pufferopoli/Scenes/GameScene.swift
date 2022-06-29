@@ -481,46 +481,74 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnBullet3(enemy:SKSpriteNode) {
-        if !newEnemy.isHidden{
-            let Bullet = SKSpriteNode(imageNamed: "bubble")
-            let bulletPop = SKTexture(imageNamed: "bubblepop")
-            Bullet.zPosition = 1
-            Bullet.setScale(1.0)
-            Bullet.position = CGPoint(x: enemy.position.x, y: enemy.position.y)
-            
-            let action = SKAction.move(to: puffer.position, duration: 0.9)
-            let actionDone = SKAction.sequence([SKAction.setTexture(bulletPop), SKAction.wait(forDuration: 0.1), SKAction.removeFromParent()])
-            Bullet.run(SKAction.sequence([action, actionDone]))
-            Bullet.physicsBody = SKPhysicsBody(circleOfRadius: Bullet.size.height/7)
-            Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
-            Bullet.physicsBody!.collisionBitMask = PhysicsCategory.None
-            Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
-            Bullet.physicsBody?.affectedByGravity = false
-            Bullet.physicsBody?.isDynamic = false
-            worldNode.addChild(Bullet)
+            if !newEnemy.isHidden{
+                let Bullet = SKSpriteNode(imageNamed: "bubble")
+                let bulletPop = SKTexture(imageNamed: "bubblepop")
+                Bullet.zPosition = 1
+                Bullet.setScale(1.0)
+                Bullet.position = CGPoint(x: enemy.position.x, y: enemy.position.y)
+                
+                let action = SKAction.move(to: puffer.position, duration: 0.9)
+                let actionHard = SKAction.move(to: puffer.position, duration: 0.7)
+                let actionHardest = SKAction.move(to: puffer.position, duration: 0.5)
+                let actionDone = SKAction.sequence([SKAction.setTexture(bulletPop), SKAction.wait(forDuration: 0.1), SKAction.removeFromParent()])
+                if gameScore < 20000 {
+                Bullet.run(SKAction.sequence([action, actionDone]))
+                }
+                else if gameScore > 20000 && gameScore < 40000 {
+                    Bullet.run(SKAction.sequence([actionHard, actionDone]))
+                }
+                else if gameScore > 40000 && gameScore < 60000 {
+                    Bullet.run(SKAction.sequence([actionHardest, actionDone]))
+                }
+                else {
+                    Bullet.run(SKAction.sequence([actionHardest, actionDone]))
+                }
+
+    Bullet.physicsBody = SKPhysicsBody(circleOfRadius: Bullet.size.height/7)
+                Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
+                Bullet.physicsBody!.collisionBitMask = PhysicsCategory.None
+                Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
+                Bullet.physicsBody?.affectedByGravity = false
+                Bullet.physicsBody?.isDynamic = false
+                worldNode.addChild(Bullet)
+            }
         }
-    }
-    
-    func spawnBullet4(enemy:SKSpriteNode){
-        if !newEnemy2.isHidden {
-            let Bullet = SKSpriteNode(imageNamed: "bubble")
-            let bulletPop = SKTexture(imageNamed: "bubblepop")
-            Bullet.zPosition = 1
-            Bullet.setScale(1.5)
-            Bullet.position = CGPoint(x: enemy.position.x, y: enemy.position.y)
-            
-            let action = SKAction.move(to: puffer.position, duration: 1.3)
-            let actionDone = SKAction.sequence([SKAction.setTexture(bulletPop), SKAction.wait(forDuration: 0.1), SKAction.removeFromParent()])
-            Bullet.run(SKAction.sequence([action, actionDone]))
-            Bullet.physicsBody = SKPhysicsBody(circleOfRadius: Bullet.size.height/7)
-            Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
-            Bullet.physicsBody!.collisionBitMask = PhysicsCategory.None
-            Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
-            Bullet.physicsBody?.affectedByGravity = false
-            Bullet.physicsBody?.isDynamic = false
-            worldNode.addChild(Bullet)
+        
+        func spawnBullet4(enemy:SKSpriteNode){
+            if !newEnemy2.isHidden {
+                let Bullet = SKSpriteNode(imageNamed: "bubble")
+                let bulletPop = SKTexture(imageNamed: "bubblepop")
+                Bullet.zPosition = 1
+                Bullet.setScale(1.5)
+                Bullet.position = CGPoint(x: enemy.position.x, y: enemy.position.y)
+                
+                let action = SKAction.move(to: puffer.position, duration: 1.3)
+                let actionHard = SKAction.move(to: puffer.position, duration: 1.0)
+                let actionHardest = SKAction.move(to: puffer.position, duration: 0.8)
+                let actionDone = SKAction.sequence([SKAction.setTexture(bulletPop), SKAction.wait(forDuration: 0.1), SKAction.removeFromParent()])
+                if gameScore < 20000 {
+                Bullet.run(SKAction.sequence([action, actionDone]))
+                }
+                else if gameScore > 20000 && gameScore < 40000 {
+                    Bullet.run(SKAction.sequence([actionHard, actionDone]))
+                }
+                else if gameScore > 40000 && gameScore < 60000 {
+                    Bullet.run(SKAction.sequence([actionHardest, actionDone]))
+                }
+                else {
+                    Bullet.run(SKAction.sequence([actionHardest, actionDone]))
+                }
+                
+                Bullet.physicsBody = SKPhysicsBody(circleOfRadius: Bullet.size.height/7)
+                Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
+                Bullet.physicsBody!.collisionBitMask = PhysicsCategory.None
+                Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Ally
+                Bullet.physicsBody?.affectedByGravity = false
+                Bullet.physicsBody?.isDynamic = false
+                worldNode.addChild(Bullet)
+            }
         }
-    }
     
     func spawnEnemy() {
         let vortex = SKSpriteNode(imageNamed: "Vortexopoli")
