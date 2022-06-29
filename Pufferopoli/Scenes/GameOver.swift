@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import GameKit
 
 class GameOver : SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
@@ -17,6 +18,7 @@ class GameOver : SKScene {
     override func didMove(to view: SKView) {
         if userScore > UserDefaults.standard.integer(forKey: "scoreKey") {
             UserDefaults.standard.set(userScore, forKey: "scoreKey")
+            GKLeaderboard.submitScore(userScore, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["69420"]) { error in }
         }
         
         score.zPosition = 3
@@ -58,12 +60,13 @@ class GameOver : SKScene {
             if let touchedNode = nodeAtPoint as? SKSpriteNode {
                 if touchedNode.name?.starts(with: "RetryButton") == true {
                     let gameScene = GameScene(fileNamed: "GameScene")
+                    gameScene?.sceneManagerDelegate = self.sceneManagerDelegate
                     print("moving to gameplay")
                     self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0))
                 }
                 if touchedNode.name?.starts(with: "MainMenuButton") == true {
                     let gameScene = HomeScreen(fileNamed: "HomeScreen")
-                    print("moving to gameplay")
+                    gameScene?.sceneManagerDelegate = self.sceneManagerDelegate
                     self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0))
                 }
             }

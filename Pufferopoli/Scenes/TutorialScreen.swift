@@ -21,6 +21,7 @@ class TutorialScreen : SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let gameScene = HomeScreen(fileNamed: "HomeScreen")
+        gameScene?.sceneManagerDelegate = self.sceneManagerDelegate
         print("moving to home")
         self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0.4))
     }

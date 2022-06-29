@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import GameKit
 
 class HomeScreen : SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
@@ -28,11 +29,21 @@ class HomeScreen : SKScene {
             if let touchedNode = nodeAtPoint as? SKSpriteNode {
                 if touchedNode.name?.starts(with: "StartButton") == true {
                     let gameScene = TutorialScreen(fileNamed: "TutorialScreen")
+                    gameScene?.sceneManagerDelegate = self.sceneManagerDelegate
                     print("moving to tutorial")
                     self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0.4))
                 }
+                else if touchedNode.name?.starts(with: "GCButton") == true {
+                    let viewController = GKGameCenterViewController(leaderboardID: "69420", playerScope: .global, timeScope: .allTime)
+                    viewController.gameCenterDelegate = sceneManagerDelegate as? GKGameCenterControllerDelegate
+                    if let controller = sceneManagerDelegate as? GameViewController {
+                        controller.present(viewController, animated: true, completion: nil)
+                    }
+                    
+                }
                 else {
                     let gameScene = GameScene(fileNamed: "GameScene")
+                    gameScene?.sceneManagerDelegate = self.sceneManagerDelegate
                     print("moving to gameplay")
                     self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0.4))
                 }

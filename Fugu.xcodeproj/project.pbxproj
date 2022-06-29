@@ -22,6 +22,7 @@
 		1C04ECA827FC720600E65936 /* FreePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C87BD5627EB1C3A00240F9D /* FreePixel.ttf */; };
 		1C350659280EFCA600EE4806 /* FuguSlice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C350658280EFCA600EE4806 /* FuguSlice.mp3 */; };
 		1C35065B280EFCB000EE4806 /* SuperFugu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C35065A280EFCB000EE4806 /* SuperFugu.mp3 */; };
+		1C68CF74286C8779003BE80F /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C68CF73286C8779003BE80F /* GameKit.framework */; };
 		1C8594A227FF2C1500750CF4 /* Slashed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A127FF2C1500750CF4 /* Slashed.mp3 */; };
 		1C8594A427FF2FDD00750CF4 /* Carrot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */; };
 		1C8594A628046BD400750CF4 /* BubblePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A528046BD400750CF4 /* BubblePixel.ttf */; };
@@ -77,6 +78,7 @@
 		1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1C350658280EFCA600EE4806 /* FuguSlice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FuguSlice.mp3; sourceTree = "<group>"; };
 		1C35065A280EFCB000EE4806 /* SuperFugu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SuperFugu.mp3; sourceTree = "<group>"; };
+		1C68CF73286C8779003BE80F /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		1C8594A127FF2C1500750CF4 /* Slashed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slashed.mp3; sourceTree = "<group>"; };
 		1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Carrot.mp3; sourceTree = "<group>"; };
 		1C8594A528046BD400750CF4 /* BubblePixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BubblePixel.ttf; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C68CF74286C8779003BE80F /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +136,7 @@
 				1C006DBA27E8CC2900532F95 /* PufferopoliTests */,
 				1C006DC427E8CC2900532F95 /* PufferopoliUITests */,
 				1C006D9F27E8CC2800532F95 /* Products */,
+				1C68CF72286C8779003BE80F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 0;
@@ -204,6 +208,14 @@
 				1C87BD5927EB2CFE00240F9D /* Puffer.swift */,
 			);
 			path = "Support Code";
+			sourceTree = "<group>";
+		};
+		1C68CF72286C8779003BE80F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C68CF73286C8779003BE80F /* GameKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		1C6D151727EA21CD005F37D8 /* Fonts */ = {
@@ -567,7 +579,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = J7Z8L7X93B;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -576,6 +588,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
@@ -584,7 +597,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.Fugu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -599,7 +612,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = J7Z8L7X93B;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -608,6 +621,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
@@ -616,7 +630,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.Fugu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

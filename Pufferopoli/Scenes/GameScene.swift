@@ -8,6 +8,7 @@
 import SpriteKit
 import GameplayKit
 import AVFoundation
+import GameKit
 
 struct PhysicsCategory {
     static let None: UInt32 = 0
@@ -108,6 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         userScore = gameScore
         blackBox.run(SKAction.fadeAlpha(to: 1.0, duration: 1.0))
         let gameScene = GameOver(fileNamed: "GameOver")
+        gameScene?.sceneManagerDelegate = self.sceneManagerDelegate
         print("moving to gameplay")
         self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0.5))
     }
