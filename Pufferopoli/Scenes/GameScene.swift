@@ -20,7 +20,7 @@ struct PhysicsCategory {
     static let Carrot: UInt32 = 0b100000 // 16
     static let Enemy2: UInt32 = 0b1000000 //3 2
 }
-
+let modelName = UIDevice.modelName
 let randomNumber = arc4random_uniform(2)
 let x: CGFloat = randomNumber == 0 ? 1 : -1
 
@@ -744,7 +744,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.text = "SCORE  0"
         scoreLabel.fontColor = .white
         scoreLabel.horizontalAlignmentMode = .center
-        scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 70)
+        //Device check so that the score label doesn't overlap iPhone 14 Pro's dynamic island
+        if modelName == "Simulator iPhone 14 Pro" {
+            scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 80)
+        }
+        
+        else if modelName == "Simulator iPhone 14 Pro Max" {
+            scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 80)
+        }
+        
+        else if modelName == "iPhone 14 Pro" {
+            scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 80)
+        }
+        
+        else if modelName == "iPhone 14 Pro Max" {
+            scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 80)
+        }
+        
+        else {
+            scoreLabel.position = CGPoint(x: 0, y: self.frame.height/2 - 70)
+        }
         scoreLabel.zPosition = 2
         worldNode.addChild(scoreLabel)
         

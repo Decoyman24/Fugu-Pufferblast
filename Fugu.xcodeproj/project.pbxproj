@@ -23,6 +23,7 @@
 		1C350659280EFCA600EE4806 /* FuguSlice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C350658280EFCA600EE4806 /* FuguSlice.mp3 */; };
 		1C35065B280EFCB000EE4806 /* SuperFugu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C35065A280EFCB000EE4806 /* SuperFugu.mp3 */; };
 		1C68CF74286C8779003BE80F /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C68CF73286C8779003BE80F /* GameKit.framework */; };
+		1C7E8C7D292FAFF100272FD3 /* DeviceCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E8C7C292FAFF100272FD3 /* DeviceCheck.swift */; };
 		1C8594A227FF2C1500750CF4 /* Slashed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A127FF2C1500750CF4 /* Slashed.mp3 */; };
 		1C8594A427FF2FDD00750CF4 /* Carrot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */; };
 		1C8594A628046BD400750CF4 /* BubblePixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C8594A528046BD400750CF4 /* BubblePixel.ttf */; };
@@ -79,6 +80,7 @@
 		1C350658280EFCA600EE4806 /* FuguSlice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FuguSlice.mp3; sourceTree = "<group>"; };
 		1C35065A280EFCB000EE4806 /* SuperFugu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SuperFugu.mp3; sourceTree = "<group>"; };
 		1C68CF73286C8779003BE80F /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		1C7E8C7C292FAFF100272FD3 /* DeviceCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCheck.swift; sourceTree = "<group>"; };
 		1C8594A127FF2C1500750CF4 /* Slashed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slashed.mp3; sourceTree = "<group>"; };
 		1C8594A327FF2FDD00750CF4 /* Carrot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Carrot.mp3; sourceTree = "<group>"; };
 		1C8594A528046BD400750CF4 /* BubblePixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BubblePixel.ttf; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				1CD8618527ECAE9E005B4357 /* SKTAudio.swift */,
 				1C87BD5D27EB2D5C00240F9D /* TextureAtlases.swift */,
 				1C87BD5927EB2CFE00240F9D /* Puffer.swift */,
+				1C7E8C7C292FAFF100272FD3 /* DeviceCheck.swift */,
 			);
 			path = "Support Code";
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				1CFBE9F1286100E500AE0BB5 /* TutorialScreen.swift in Sources */,
 				1C006DAA27E8CC2800532F95 /* GameViewController.swift in Sources */,
 				1C87BD6627EB805100240F9D /* HomeScreen.swift in Sources */,
+				1C7E8C7D292FAFF100272FD3 /* DeviceCheck.swift in Sources */,
 				1CD8618627ECAE9E005B4357 /* SKTAudio.swift in Sources */,
 				1C87BD5E27EB2D5C00240F9D /* TextureAtlases.swift in Sources */,
 				1C006DA227E8CC2800532F95 /* AppDelegate.swift in Sources */,
@@ -579,7 +583,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = J7Z8L7X93B;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -612,7 +616,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = J7Z8L7X93B;
 				GENERATE_INFOPLIST_FILE = YES;
