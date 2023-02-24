@@ -79,6 +79,7 @@
 		1C006DC727E8CC2900532F95 /* PufferopoliUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PufferopoliUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1C350658280EFCA600EE4806 /* FuguSlice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FuguSlice.mp3; sourceTree = "<group>"; };
 		1C35065A280EFCB000EE4806 /* SuperFugu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SuperFugu.mp3; sourceTree = "<group>"; };
+		1C59BCB329A8C3EA00DCF7BB /* Fugu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fugu.entitlements; sourceTree = "<group>"; };
 		1C68CF73286C8779003BE80F /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		1C7E8C7C292FAFF100272FD3 /* DeviceCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCheck.swift; sourceTree = "<group>"; };
 		1C8594A127FF2C1500750CF4 /* Slashed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slashed.mp3; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		1C006D9527E8CC2800532F95 = {
 			isa = PBXGroup;
 			children = (
+				1C59BCB329A8C3EA00DCF7BB /* Fugu.entitlements */,
 				1CD8618227ECAE6B005B4357 /* Sounds */,
 				1C6D151727EA21CD005F37D8 /* Fonts */,
 				1C006DA027E8CC2800532F95 /* Pufferopoli */,
@@ -582,8 +584,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fugu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = J7Z8L7X93B;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -601,7 +604,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.Fugu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -615,8 +618,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fugu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = J7Z8L7X93B;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -634,7 +638,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = LuigiMinniti.Fugu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
